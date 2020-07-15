@@ -1,15 +1,40 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import IndexLayout from "../layout/IndexLayout";
+import Mine from "../views/Mine/Mine";
+import Index from "../views/Index/Index";
+import Attention from "../views/Index/Attention";
+import Recommend from "../views/Index/Recommend";
 
 
 Vue.use(VueRouter)
 
   const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
+  {
+    path: '/',
+    redirect: '/index',
+  },{
+    path: '/index',
+    component: IndexLayout,
+    children:[
+      {
+        path: '',
+        component: Index,
+        children:[
+          {
+            path: 'Attention',
+            component: Attention,
+          },{
+            path: 'Recommend',
+            component: Recommend,
+          },
+        ]
+      },{
+        path: '/mine',
+        component: Mine,
+      },
+    ]
+  }
   // {
   //   path: '/about',
   //   name: 'About',
