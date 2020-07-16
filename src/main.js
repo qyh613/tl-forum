@@ -14,8 +14,25 @@ import "./style/base.css"
 
 
 /* vant 样式导入 */
-import {Button, Icon, Overlay, Search, Tab, Tabbar, TabbarItem, Tabs} from 'vant';
-Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search);
+import {
+  Button,
+  Icon,
+  Overlay,
+  Search,
+  Tab,
+  Tabbar,
+  TabbarItem,
+  Tabs,
+  Image as VanImage,
+  List,
+  PullRefresh,
+  Cell, NavBar, Popup
+} from 'vant';
+Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search).use(VanImage)
+    .use(List).use(PullRefresh).use(Cell).use(NavBar).use(Popup);
+
+/* 导入icon */
+import './assets/font/iconfont'
 
 
 

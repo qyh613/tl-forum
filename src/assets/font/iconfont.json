@@ -1,0 +1,30 @@
+{
+  "id": "1947649",
+  "name": "tl-forum",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3262892",
+      "name": "赞",
+      "font_class": "zan",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "10715458",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "5756002",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    }
+  ]
+}

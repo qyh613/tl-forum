@@ -1,6 +1,6 @@
 <template>
     <div>
-        这是热榜页
+        这是发现页
     </div>
 </template>
 

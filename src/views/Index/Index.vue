@@ -1,17 +1,15 @@
 <template>
     <div>
         <div class="headNav">
-            <van-tabs v-model="active" animated scrollspy>
-                <!--            <van-tab title="关注" to="/index/Attention"></van-tab>-->
-                <!--            <van-tab title="推荐" to="/index/Recommend"></van-tab>-->
+            <van-tabs v-model="active" animated >
                 <van-tab title="关注">
                     <Attention />
                 </van-tab>
                 <van-tab title="推荐">
                     <Recommend />
                 </van-tab>
-                <van-tab title="热榜">
-                    <HotList />
+                <van-tab title="发现">
+                    <Found />
                 </van-tab>
             </van-tabs>
             <router-link tag="div" class="search" to="search">
@@ -26,7 +24,7 @@
 <script>
     import Attention from "./components/Attention";
     import Recommend from "./components/Recommend";
-    import HotList from "./components/HotList";
+    import Found from "./components/Found";
 
     export default {
         name: "Index",
@@ -38,7 +36,7 @@
         components: {
             Attention,
             Recommend,
-            HotList
+            Found
         }
     }
 </script>

@@ -4,6 +4,7 @@ import IndexLayout from "../layout/IndexLayout";
 import Mine from "../views/Mine/Mine";
 import Index from "../views/Index/Index";
 import Search from "../views/Index/components/Search";
+import PostDetails from "../views/Index/components/PostDetails";
 // import Attention from "../views/Index/Attention";
 // import Recommend from "../views/Index/Recommend";
 
@@ -36,10 +37,12 @@ const routes = [
                 component: Mine,
             },
         ]
-    },
-    {
+    },{
         path: '/search',
         component: Search,
+    },{
+        path: '/post/details/:postsId',
+        component: PostDetails,
     }
     // {
     //   path: '/about',
