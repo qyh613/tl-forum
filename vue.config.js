@@ -6,11 +6,8 @@ module.exports={
         hot: true,
         proxy: {
             "/api": {
-                target: "http://59.111.104.104:8086",
+                target: "https://showme.myhope365.com",
                 changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
             },
 
         }

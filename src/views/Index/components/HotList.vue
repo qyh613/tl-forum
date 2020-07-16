@@ -1,15 +1,15 @@
 <template>
     <div>
-        这是推荐也
+        这是热榜页
     </div>
 </template>
 
 <script>
     export default {
-        name: "Recommend"
+        name: "HotList"
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
 </style>

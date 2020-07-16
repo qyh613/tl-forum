@@ -14,8 +14,8 @@ import "./style/base.css"
 
 
 /* vant 样式导入 */
-import {Button, Icon, Overlay, Tab, Tabbar, TabbarItem, Tabs} from 'vant';
-Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs);
+import {Button, Icon, Overlay, Search, Tab, Tabbar, TabbarItem, Tabs} from 'vant';
+Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search);
 
 
 
