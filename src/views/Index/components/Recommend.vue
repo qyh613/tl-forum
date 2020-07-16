@@ -54,12 +54,15 @@
                 pageNum: 0
             }
         },
+        props:{
+            categoryId:[Number,String]
+        },
         methods: {
             onLoad() {
-                getPostList(this.pageNum, 10).then(res => {
+                getPostList(this.pageNum, 10,this.categoryId).then(res => {
                     this.postList = this.postList.concat(res.rows)
                     this.loading = false
-                    console.log(res.rows)
+                    // console.log(res.rows)
                 })
                 this.pageNum += 1;
             },

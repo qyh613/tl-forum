@@ -6,7 +6,7 @@
                     <Attention />
                 </van-tab>
                 <van-tab title="推荐">
-                    <Recommend />
+                    <Recommend categoryId=""/>
                 </van-tab>
                 <van-tab title="发现">
                     <Found />

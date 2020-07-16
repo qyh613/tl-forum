@@ -4,10 +4,11 @@
 import request from '../utils/http'
 
 //  帖子列表
-export function getPostList(pageNum,pageSize){
+export function getPostList(pageNum,pageSize,categoryId){
     const formData = new  FormData()
     formData.append("pageNum",pageNum)
     formData.append("pageSize",pageSize)
+    formData.append("categoryId",categoryId)
     return request
         .post("/api/bbs/bbsPosts/open/list",formData)
 }
@@ -36,4 +37,14 @@ export function getPostReply(parentId) {
     PostReply.append("parentId",parentId)
     return request
         .post('/api/bbs/bbsComment/open/reply/list',PostReply)
+}
+
+
+
+// 发现页
+export function getFound(pageNum,pageSize) {
+    const Found = new  FormData()
+    Found.append("pageNum",pageNum)
+    Found.append("pageSize",pageSize)
+    return request.post('/api/bbs/bbsCategory/open/list',Found)
 }

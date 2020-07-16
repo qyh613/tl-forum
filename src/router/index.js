@@ -5,6 +5,7 @@ import Mine from "../views/Mine/Mine";
 import Index from "../views/Index/Index";
 import Search from "../views/Index/components/Search";
 import PostDetails from "../views/Index/components/PostDetails";
+import FoundDetails from "../views/Index/components/FoundDetails";
 // import Attention from "../views/Index/Attention";
 // import Recommend from "../views/Index/Recommend";
 
@@ -22,19 +23,13 @@ const routes = [
             {
                 path: '',
                 component: Index,
-                // children:[
-                //   {
-                //     path: '/search',
-                //     component: Search,
-                //   }
-                //   ,{
-                //     path: '/index/Recommend',
-                //     component: Recommend,
-                //   },
-                // ]
             }, {
                 path: '/mine',
                 component: Mine,
+            }, {
+                path: '/foundDetails',
+                component: FoundDetails,
+                name:"FoundDetails"
             },
         ]
     },{
