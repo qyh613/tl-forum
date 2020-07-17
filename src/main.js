@@ -40,14 +40,6 @@ Vue.use(CellGroup);
 Vue.use(Field)
 import { RadioGroup, Radio } from 'vant';
 import {
-  // Button,
-  // Icon,
-  // Overlay,
-  // Search,
-  // Tab,
-  // Tabbar,
-  // TabbarItem,
-  // Tabs,
   Image as VanImage,
   List,
   PullRefresh,

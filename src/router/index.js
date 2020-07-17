@@ -11,10 +11,8 @@ import ChangeUserInfo from "../views/Mine/components/ChangeUserInfo";
 import Register from "../views/Mine/components/Register";
 import Participate from "../views/Mine/components/Participate";
 import Forget from "../views/Mine/components/Forget";
-// import ModifypersonalInformation from "../views/Mine/components/ModifypersonalInformation";
-
 import FoundDetails from "../views/Index/components/FoundDetails";
-
+import PostDetails from "../views/Index/components/PostDetails";
 
 
 Vue.use(VueRouter)
@@ -77,6 +75,9 @@ const routes = [
     {
         path: '/search',
         component: Search,
+    },{
+        path: '/post/details/:postsId',
+        component: PostDetails,
     }
 
 ]
