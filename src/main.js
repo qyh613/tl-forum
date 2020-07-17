@@ -40,21 +40,22 @@ Vue.use(CellGroup);
 Vue.use(Field)
 import { RadioGroup, Radio } from 'vant';
 import {
-  Button,
-  Icon,
-  Overlay,
-  Search,
-  Tab,
-  Tabbar,
-  TabbarItem,
-  Tabs,
+  // Button,
+  // Icon,
+  // Overlay,
+  // Search,
+  // Tab,
+  // Tabbar,
+  // TabbarItem,
+  // Tabs,
   Image as VanImage,
   List,
   PullRefresh,
-  Cell, NavBar, Popup
+  // Cell, NavBar,
+    Popup
 } from 'vant';
 Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search).use(VanImage)
-    .use(List).use(PullRefresh).use(Cell).use(NavBar).use(Popup);
+    .use(List).use(PullRefresh).use(Cell).use(Popup);
 
 /* 导入icon */
 import './assets/font/iconfont'

@@ -12,7 +12,7 @@ import Register from "../views/Mine/components/Register";
 import Participate from "../views/Mine/components/Participate";
 import Forget from "../views/Mine/components/Forget";
 // import ModifypersonalInformation from "../views/Mine/components/ModifypersonalInformation";
-import PostDetails from "../views/Index/components/PostDetails";
+
 import FoundDetails from "../views/Index/components/FoundDetails";
 // import Attention from "../views/Index/Attention";
 // import Recommend from "../views/Index/Recommend";
@@ -79,14 +79,7 @@ const routes = [
         path: '/search',
         component: Search,
     }
-    // {
-    //   path: '/about',
-    //   name: 'About',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    // }
+
 ]
 
 const router = new VueRouter({
