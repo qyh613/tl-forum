@@ -12,8 +12,14 @@ export function getPostList(pageNum,pageSize,categoryId){
     return request
         .post("/api/bbs/bbsPosts/open/list",formData)
 }
-
-
+export function getPostSearch(title){
+    const Search = new  FormData()
+    // Search.append("pageNum",pageNum)
+    // Search.append("pageSize",pageSize)
+    Search.append("title",title)
+    return request
+        .post("/api/bbs/bbsPosts/open/list",Search)
+}
 
 
 // 帖子详情

@@ -2,7 +2,7 @@
     <div class="postBox">
 
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" >
                 <div class="postList" v-for="(item,index) in postList" :key="index">
                     <div class="content">
                         <router-link :to="'/post/details/'+item.postsId" tag="div">
@@ -36,14 +36,15 @@
                 </div>
             </van-list>
         </van-pull-refresh>
-        <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"/>
+        <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"
+                         @click-overlay="clickOverlay"/>
     </div>
 </template>
 
 <script>
     // 推荐页*********************************************8
     import {
-        getPostList
+        getPostList, getPostSearch
     } from "../../../api/Index-api";
     import {mapState} from "vuex";
 
@@ -55,7 +56,7 @@
                 loading: false,
                 finished: false,
                 refreshing: false,
-                pageNum: 0,
+                pageNum: 1,
                 options: [
                     [
                         { name: '微信', icon: 'wechat' },
@@ -71,14 +72,20 @@
             }
         },
         props: {
-            categoryId: [Number, String]
+            categoryId: [Number, String],
+            keyWord: [Number, String],
         },
         methods: {
             onLoad() {
-                getPostList(this.pageNum, 10, this.categoryId).then(res => {
-                    this.postList = this.postList.concat(res.rows)
-                    this.loading = false
-                })
+                if (this.categoryId !== undefined){
+                    getPostList(this.pageNum, 10, this.categoryId).then(res => {
+                        this.postList = this.postList.concat(res.rows)
+                        this.loading = false
+                        if(this.postList.length == res.total){
+                            this.finished = true
+                        }
+                    })
+                }
                 this.pageNum += 1;
             },
             onRefresh() {
@@ -93,10 +100,25 @@
             cancel(){
                 console.log(1)
                 this.$store.commit("changeShare",{showShare:false})
+            },
+            clickOverlay(){
+                this.$store.commit("changeShare",{showShare:false})
             }
         },
         computed:{
             ...mapState(["showShare"])
+        },
+        watch:{
+            keyWord(){
+                getPostSearch(this.keyWord).then(res=>{
+                    let list = [];
+                    this.postList = list.concat(res.rows)
+                    this.loading = false
+                    if(this.postList.length == res.total){
+                        this.finished = true
+                    }
+                })
+            }
         }
 
     }

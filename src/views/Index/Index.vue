@@ -18,7 +18,8 @@
 
             <!--        <router-view></router-view>-->
         </div>
-        <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"/>
+        <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"
+                         @click-overlay="clickOverlay"/>
     </div>
 </template>
 
@@ -59,7 +60,9 @@
         },
         methods:{
             cancel(){
-                console.log(1)
+                this.$store.commit("changeShare",{showShare:false})
+            },
+            clickOverlay(){
                 this.$store.commit("changeShare",{showShare:false})
             }
         }
