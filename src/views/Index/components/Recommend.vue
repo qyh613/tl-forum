@@ -1,9 +1,8 @@
 <template>
     <div class="postBox">
+
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
             <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-                <!--                <router-link :to="'/post/details/'+item.postsId" tag="div" class="postList" v-for="(item,index) in postList"-->
-                <!--                    :key="index">-->
                 <div class="postList" v-for="(item,index) in postList" :key="index">
                     <div class="content">
                         <router-link :to="'/post/details/'+item.postsId" tag="div">
@@ -34,14 +33,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <!--                </router-link>-->
             </van-list>
         </van-pull-refresh>
-        <!-- 分享-->
-        <van-share-sheet v-model="showShare" title="立即分享给好友" :options="options" />
     </div>
 </template>
 
@@ -60,19 +54,6 @@
                 finished: false,
                 refreshing: false,
                 pageNum: 0,
-                showShare: false,
-                options: [
-                    [
-                        { name: '微信', icon: 'wechat' },
-                        { name: '微博', icon: 'weibo' },
-                        { name: 'QQ', icon: 'qq' },
-                    ],
-                    [
-                        { name: '复制链接', icon: 'link' },
-                        { name: '分享海报', icon: 'poster' },
-                        { name: '二维码', icon: 'qrcode' },
-                    ],
-                ],
             }
         },
         props: {
@@ -94,10 +75,10 @@
                 this.onLoad();
             },
             BBSShare() {
-                this.showShare = true
-                console.log("分享下")
-            }
+                // this.$store.commit("changeShare",{share:true})
+            },
         },
+
     }
 </script>
 

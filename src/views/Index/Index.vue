@@ -18,6 +18,7 @@
 
             <!--        <router-view></router-view>-->
         </div>
+        <van-share-sheet v-model="share" title="立即分享给好友" :options="options" @cancel="cancel"/>
     </div>
 </template>
 
@@ -25,18 +26,40 @@
     import Attention from "./components/Attention";
     import Recommend from "./components/Recommend";
     import Found from "./components/Found";
+    import {mapState} from "vuex";
 
     export default {
         name: "Index",
         data() {
             return {
-                active: 1
+                active: 1,
+                options: [
+                    [
+                        { name: '微信', icon: 'wechat' },
+                        { name: '微博', icon: 'weibo' },
+                        { name: 'QQ', icon: 'qq' },
+                    ],
+                    [
+                        { name: '复制链接', icon: 'link' },
+                        { name: '分享海报', icon: 'poster' },
+                        { name: '二维码', icon: 'qrcode' },
+                    ],
+                ],
             }
         },
         components: {
             Attention,
             Recommend,
             Found
+        },
+        computed:{
+            ...mapState(["share"])
+        },
+        methods:{
+            cancel(){
+                console.log(1)
+                // this.$store.commit("changeShare",{share:false})
+            }
         }
     }
 </script>
