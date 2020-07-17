@@ -2,19 +2,22 @@
     <div class="postBox">
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
             <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-                <router-link :to="'/post/details/'+item.postsId" tag="div" class="postList" v-for="(item,index) in postList"
-                    :key="index">
+                <!--                <router-link :to="'/post/details/'+item.postsId" tag="div" class="postList" v-for="(item,index) in postList"-->
+                <!--                    :key="index">-->
+                <div class="postList" v-for="(item,index) in postList" :key="index">
                     <div class="content">
-                        <div class="title">
-                            <van-image round width="3rem" height="3rem" :src="item.avatar" />
-                            <span class="postName">{{item.userName}}</span>
-                        </div>
-                        <div>
-                            <h3>{{item.intro}}</h3>
-                            <img :src="item.coverImgUrl" class="postImg">
-                        </div>
-                        <div class="operation">
+                        <router-link :to="'/post/details/'+item.postsId" tag="div">
+                            <div class="title">
+                                <van-image round width="3rem" height="3rem" :src="item.avatar"/>
+                                <span class="postName">{{item.userName}}</span>
+                            </div>
                             <div>
+                                <h3>{{item.intro}}</h3>
+                                <img :src="item.coverImgUrl" class="postImg">
+                            </div>
+                        </router-link>
+                        <div class="operation">
+                            <div @click="BBSShare">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-fenxiang"></use>
                                 </svg>
@@ -31,9 +34,14 @@
                             </div>
                         </div>
                     </div>
-                </router-link>
+
+                </div>
+
+                <!--                </router-link>-->
             </van-list>
         </van-pull-refresh>
+        <!-- 分享-->
+        <van-share-sheet v-model="showShare" title="立即分享给好友" :options="options" />
     </div>
 </template>
 
@@ -51,15 +59,28 @@
                 loading: false,
                 finished: false,
                 refreshing: false,
-                pageNum: 0
+                pageNum: 0,
+                showShare: false,
+                options: [
+                    [
+                        { name: '微信', icon: 'wechat' },
+                        { name: '微博', icon: 'weibo' },
+                        { name: 'QQ', icon: 'qq' },
+                    ],
+                    [
+                        { name: '复制链接', icon: 'link' },
+                        { name: '分享海报', icon: 'poster' },
+                        { name: '二维码', icon: 'qrcode' },
+                    ],
+                ],
             }
         },
-        props:{
-            categoryId:[Number,String]
+        props: {
+            categoryId: [Number, String]
         },
         methods: {
             onLoad() {
-                getPostList(this.pageNum, 10,this.categoryId).then(res => {
+                getPostList(this.pageNum, 10, this.categoryId).then(res => {
                     this.postList = this.postList.concat(res.rows)
                     this.loading = false
                     // console.log(res.rows)
@@ -72,6 +93,10 @@
                 this.refreshing = false
                 this.onLoad();
             },
+            BBSShare() {
+                this.showShare = true
+                console.log("分享下")
+            }
         },
     }
 </script>
@@ -120,6 +145,7 @@
                 justify-content: space-between;
                 font-size: 20px;
                 padding: 10px;
+
             }
         }
     }
