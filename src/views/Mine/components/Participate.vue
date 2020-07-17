@@ -1,10 +1,10 @@
 <template>
-    <div> <router-view></router-view></div>
+    <div>111111</div>
 </template>
 
 <script>
     export default {
-        name: "Mine"
+        name: "Participate"
     }
 </script>
 

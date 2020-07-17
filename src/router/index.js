@@ -4,6 +4,14 @@ import IndexLayout from "../layout/IndexLayout";
 import Mine from "../views/Mine/Mine";
 import Index from "../views/Index/Index";
 import Search from "../views/Index/components/Search";
+import PersonalDetails from "../views/Mine/components/PersonalDetails";
+import Login from "../views/Mine/components/Login";
+import PersonalInformation from "../views/Mine/components/PersonalInformation";
+import ChangeUserInfo from "../views/Mine/components/ChangeUserInfo";
+import Register from "../views/Mine/components/Register";
+import Participate from "../views/Mine/components/Participate";
+import Forget from "../views/Mine/components/Forget";
+// import ModifypersonalInformation from "../views/Mine/components/ModifypersonalInformation";
 // import Attention from "../views/Index/Attention";
 // import Recommend from "../views/Index/Recommend";
 
@@ -21,20 +29,46 @@ const routes = [
             {
                 path: '',
                 component: Index,
-                // children:[
-                //   {
-                //     path: '/search',
-                //     component: Search,
-                //   }
-                //   ,{
-                //     path: '/index/Recommend',
-                //     component: Recommend,
-                //   },
-                // ]
+
             }, {
                 path: '/mine',
                 component: Mine,
+                children:[
+                    {
+                        path: '',
+                        component: Login,
+                    },
+                    {
+                        path: '/personalDetails',
+                        component:PersonalDetails,
+                    },
+                    {
+                        path: '/personalInformation',
+                        component:PersonalInformation,
+                    },
+
+                    {
+                        path: '/changeUserInfo',
+                        component:ChangeUserInfo,
+                    },
+                    {
+                        path: '/register',
+                        component:Register,
+                    },
+
+                    {
+                        path: '/participate',
+                        component:Participate,
+                    },
+                    {
+                        path: '/forget',
+                        component:Forget,
+                    },
+                ]
+
             },
+
+
         ]
     },
     {
