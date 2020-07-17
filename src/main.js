@@ -26,10 +26,10 @@ import {
   Image as VanImage,
   List,
   PullRefresh,
-  Cell, NavBar, Popup
+  Cell, NavBar, Popup, ShareSheet
 } from 'vant';
 Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search).use(VanImage)
-    .use(List).use(PullRefresh).use(Cell).use(NavBar).use(Popup);
+    .use(List).use(PullRefresh).use(Cell).use(NavBar).use(Popup).use(ShareSheet);
 
 /* 导入icon */
 import './assets/font/iconfont'

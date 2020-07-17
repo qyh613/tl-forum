@@ -7,6 +7,7 @@
 </template>
 
 <script>
+//  发现详情页
     import Recommend from "./Recommend";
 
     export default {
