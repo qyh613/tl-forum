@@ -12,6 +12,8 @@ import Register from "../views/Mine/components/Register";
 import Participate from "../views/Mine/components/Participate";
 import Forget from "../views/Mine/components/Forget";
 // import ModifypersonalInformation from "../views/Mine/components/ModifypersonalInformation";
+import PostDetails from "../views/Index/components/PostDetails";
+import FoundDetails from "../views/Index/components/FoundDetails";
 // import Attention from "../views/Index/Attention";
 // import Recommend from "../views/Index/Recommend";
 
@@ -66,9 +68,11 @@ const routes = [
                     },
                 ]
 
+            }, {
+                path: '/foundDetails',
+                component: FoundDetails,
+                name:"FoundDetails"
             },
-
-
         ]
     },
     {
