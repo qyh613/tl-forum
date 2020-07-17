@@ -50,7 +50,7 @@
         methods: {
             onClickLeft() {
                 Toast('返回');
-                this.$router.push("/personalDetails")
+                this.$router.push("/mine/personalDetails")
             },
         },
     }

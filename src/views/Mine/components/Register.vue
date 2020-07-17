@@ -80,7 +80,7 @@
                 getRegister(this.loginName,this.tel,this.code,this.password,this.userName,).then(res=>{
                     if (res.code==0){
                         Toast.success('注册成功');
-                        this.$router.push("personalDetails")
+                        this.$router.push("mine")
                     }
 
                 })

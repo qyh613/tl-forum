@@ -22,7 +22,7 @@ export default new Vuex.Store({
 
         checkLoginStatus(context) {
             return getUserInfo().then(res => {
-                if (res.data.code === 0) {
+                if (res.data.code == 0) {
                     //    已经登陆
                     context.commit("changeLogin", {isLogin: true})
                     context.commit("changeUserInfo", {userInfo: res.data.userInfo})

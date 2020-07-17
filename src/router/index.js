@@ -13,6 +13,7 @@ import Participate from "../views/Mine/components/Participate";
 import Forget from "../views/Mine/components/Forget";
 import FoundDetails from "../views/Index/components/FoundDetails";
 import PostDetails from "../views/Index/components/PostDetails";
+import store from "../store/index";
 
 
 Vue.use(VueRouter)
@@ -34,39 +35,61 @@ const routes = [
                 component: Mine,
                 children:[
                     {
-                        path: '',
+                        path: '/mine/login',
                         component: Login,
                     },
                     {
-                        path: '/personalDetails',
-                        component:PersonalDetails,
+                        path: '/mine',
+                        redirect: '/mine/login',
                     },
                     {
-                        path: '/personalInformation',
+                        path: '/mine/personalDetails',
+                        component:PersonalDetails,
+                        meta: {
+                            //需要登录才能访问
+                            isAuth: true
+                        }
+                    },
+                    {
+                        path: '/mine/personalInformation',
                         component:PersonalInformation,
+                        meta: {
+                            //需要登录才能访问
+                            isAuth: true
+                        }
                     },
 
                     {
-                        path: '/changeUserInfo',
+                        path: '/mine/changeUserInfo',
                         component:ChangeUserInfo,
+                        meta: {
+                            //需要登录才能访问
+                            isAuth: true
+                        }
                     },
                     {
-                        path: '/register',
+                        path: '/mine/register',
                         component:Register,
                     },
 
                     {
-                        path: '/participate',
+                        path: '/mine/participate',
                         component:Participate,
+                        //我参与的
+                        meta: {
+                            //需要登录才能访问
+                            isAuth: true
+                        }
+
                     },
                     {
-                        path: '/forget',
+                        path: '/mine/forget',
                         component:Forget,
                     },
                 ]
 
             }, {
-                path: '/foundDetails',
+                path: '/mine/foundDetails',
                 component: FoundDetails,
                 name:"FoundDetails"
             },
@@ -81,11 +104,35 @@ const routes = [
     }
 
 ]
-
+//执行路由守卫之前先检测
+const loginPromise = store.dispatch("checkLoginStatus")
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
 })
+//路由守卫
+router.beforeEach((to, from, next) => {
+    // ...
+    if (to.meta.isAuth) {
+        //需要鉴权
+        loginPromise.then(()=>{
+            if(store.state.isLogin){
+                next()
+            }else {
+
+                next("/mine/login")
+            }
+
+        })
+    } else {
+        next()
+    }
+
+    // next(false)
+    // next('/index')
+})
+
+
 
 export default router

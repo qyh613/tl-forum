@@ -55,8 +55,9 @@
                 loginApi(this.username, this.password).then(res => {
                     console.log(res)
                     if (res.code==0){
+                        this.$store.commit("changeLogin", {isLogin: true})
                         Toast.success('登陆成功');
-                        this.$router.push("personalDetails")
+                        this.$router.push("/mine/personalDetails")
                     }
 
                 })

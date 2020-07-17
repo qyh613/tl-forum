@@ -18,10 +18,10 @@
 <!--                <van-icon name="photograph"/>-->
                 <p>{{userInfo.userName}} </p></div>
         </div>
-        <van-cell title="查看个人信息" is-link to="PersonalInformation" />
+        <van-cell title="查看个人信息" is-link to="personalInformation" />
 
-        <van-cell title="修改个人信息" is-link to="ChangeUserInfo" />
-        <van-cell title="我参与的" is-link to="Participate" />
+        <van-cell title="修改个人信息" is-link to="changeUserInfo" />
+        <van-cell title="我参与的" is-link to="participate" />
         <van-cell title="退出登录" @click="logOut"/>
     </div>
 </template>
@@ -30,6 +30,7 @@
     import {getUserInfo} from "../../../api/LogIn-api";
     import {Toast} from "vant";
     import Dialog from "vant/lib/dialog";
+    import {mapState} from "vuex";
     // import {mapState} from "vuex";
 
 
@@ -56,23 +57,32 @@
             //     Toast('按钮');
             // },
             logOut(){
+
                 Dialog.alert({
                     title: "退出",
                     message: '确定退出',
                 })
-                    .then(() => {
-                        this.$store.commit('changeLogin', {isLogin:false})
-                        this.$router.push('/mine')
-                        // on confirm
+                .then(() => {
+                    // logOut().then(res => {
+                    //     console.log(res)
+                    // //     if (res.data.code == 0) {
+                    // //         //    退出成功
+                    // //         this.$store.commit('changeLogin', {isLogin:false})
+                    // //         this.$router.push('/mine')
+                    // //
+                    // //     }
+                    // })
+
+                    //     // on confirm
                     })
                     .catch(() => {
                         // on cancel
                     });
             }
         },
-        // computed:{
-        //     ...mapState(['userInfo'])
-        // }
+        computed:{
+            ...mapState(['isLogin'])
+        }
     }
 </script>
 

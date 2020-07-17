@@ -12,10 +12,10 @@
     //   loginApi().then(res=>{
     //     if (res.code==0){
     //       this.$store.commit('changeLogin', {isLogin:true})
-    //       // this.$router.push("/mine/personalDetails")
+    //       this.$router.push("/personalDetails")
     //     }else{
     //       this.$store.commit('changeLogin', {isLogin:false})
-    //       // this.$router.push("/mine/login")
+    //       this.$router.push("/login")
     //     }
     //   })
     // }
