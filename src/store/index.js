@@ -9,6 +9,7 @@ export default new Vuex.Store({
 
         isLogin: false,
         userInfo: {},
+        share:false,
     },
     mutations: {
         changeLogin(state, {isLogin}) {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
         changeUserInfo(state, {userInfo}) {
             state.userInfo = userInfo
         },
+        changeShare(state,{share}){
+            state.share = share
+        }
     },
     actions: {
 
