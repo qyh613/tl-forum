@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import {getUserInfo} from "../../../api/LogIn-api";
+    import {getUserInfo, logOut} from "../../../api/LogIn-api";
     import {Toast} from "vant";
     import Dialog from "vant/lib/dialog";
     import {mapState} from "vuex";
@@ -53,31 +53,24 @@
                 Toast('返回');
                 this.$router.push("/index")
             },
-            // onClickRight() {
-            //     Toast('按钮');
-            // },
+
             logOut(){
-
-                Dialog.alert({
-                    title: "退出",
-                    message: '确定退出',
+                Dialog.confirm({
+                    // title: '标题',
+                    message: '确定退出登录吗',
                 })
-                .then(() => {
-                    // logOut().then(res => {
-                    //     console.log(res)
-                    // //     if (res.data.code == 0) {
-                    // //         //    退出成功
-                    // //         this.$store.commit('changeLogin', {isLogin:false})
-                    // //         this.$router.push('/mine')
-                    // //
-                    // //     }
-                    // })
-
-                    //     // on confirm
+                    .then(() => {
+                        // on confirm
+                        logOut().then(res=>{
+                            console.log(res)
+                            this.$store.commit("changeLogin", {isLogin: false})
+                            this.$router.push("/mine/login")
+                        })
                     })
                     .catch(() => {
                         // on cancel
                     });
+
             }
         },
         computed:{

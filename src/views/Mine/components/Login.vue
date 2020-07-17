@@ -40,7 +40,7 @@
 <script>
 
     import { Toast } from 'vant';
-    import {loginApi} from "../../../api/LogIn-api";
+    import {getUserInfo, loginApi} from "../../../api/LogIn-api";
 
     export default {
         name: "Login",
@@ -55,14 +55,19 @@
                 loginApi(this.username, this.password).then(res => {
                     console.log(res)
                     if (res.code==0){
-                        this.$store.commit("changeLogin", {isLogin: true})
                         Toast.success('登陆成功');
                         this.$router.push("/mine/personalDetails")
+                        this.$store.commit("changeLogin", {isLogin: true})
                     }
 
                 })
             },
 
+        },
+        created() {
+            getUserInfo().then(res=>{
+                console.log(res)
+            })
         }
 
     }
