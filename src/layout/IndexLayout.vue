@@ -8,7 +8,7 @@
             <van-tabbar-item replace to="/index" icon="home-o">
                 首页
             </van-tabbar-item>
-            <van-tabbar-item replace icon="add">
+            <van-tabbar-item replace icon="add" @click="popUp">
                 发布
             </van-tabbar-item>
 <!--                        <van-tabbar-item replace to="/mine" icon="friends-o">-->
@@ -16,6 +16,7 @@
                 我的
             </van-tabbar-item>
         </van-tabbar>
+        <van-overlay :show="release" @click="release = false" />
     </div>
 
 </template>
@@ -27,7 +28,8 @@
         name: "IndexLayout",
         data() {
             return {
-                show: false
+                show: false,
+                release:false
             }
         },
         methods: {
@@ -37,6 +39,10 @@
                 }else {
                     this.$router.push("/mine/login")
                 }
+            },
+            popUp(){
+                console.log(1)
+                this.release = true
             }
         },
 

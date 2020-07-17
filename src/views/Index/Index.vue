@@ -18,7 +18,7 @@
 
             <!--        <router-view></router-view>-->
         </div>
-        <van-share-sheet v-model="share" title="立即分享给好友" :options="options" @cancel="cancel"/>
+        <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"/>
     </div>
 </template>
 
@@ -35,9 +35,11 @@
                 active: 1,
                 options: [
                     [
-                        { name: '微信', icon: 'wechat' },
-                        { name: '微博', icon: 'weibo' },
-                        { name: 'QQ', icon: 'qq' },
+                        { name: '微信好友', icon: 'wechat' },
+                        { name: '朋友圈', icon: 'wechat' },
+                        { name: 'QQ好友', icon: 'qq' },
+                        { name: 'QQ空间', icon: 'qq' },
+                        { name: '新浪微博', icon: 'weibo' },
                     ],
                     [
                         { name: '复制链接', icon: 'link' },
@@ -53,12 +55,12 @@
             Found
         },
         computed:{
-            ...mapState(["share"])
+            ...mapState(["showShare"])
         },
         methods:{
             cancel(){
                 console.log(1)
-                // this.$store.commit("changeShare",{share:false})
+                this.$store.commit("changeShare",{showShare:false})
             }
         }
     }

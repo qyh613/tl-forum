@@ -36,6 +36,7 @@
                 </div>
             </van-list>
         </van-pull-refresh>
+        <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"/>
     </div>
 </template>
 
@@ -44,6 +45,7 @@
     import {
         getPostList
     } from "../../../api/Index-api";
+    import {mapState} from "vuex";
 
     export default {
         name: "Recommend",
@@ -54,6 +56,18 @@
                 finished: false,
                 refreshing: false,
                 pageNum: 0,
+                options: [
+                    [
+                        { name: '微信', icon: 'wechat' },
+                        { name: '微博', icon: 'weibo' },
+                        { name: 'QQ', icon: 'qq' },
+                    ],
+                    [
+                        { name: '复制链接', icon: 'link' },
+                        { name: '分享海报', icon: 'poster' },
+                        { name: '二维码', icon: 'qrcode' },
+                    ],
+                ],
             }
         },
         props: {
@@ -64,7 +78,6 @@
                 getPostList(this.pageNum, 10, this.categoryId).then(res => {
                     this.postList = this.postList.concat(res.rows)
                     this.loading = false
-                    // console.log(res.rows)
                 })
                 this.pageNum += 1;
             },
@@ -75,9 +88,16 @@
                 this.onLoad();
             },
             BBSShare() {
-                // this.$store.commit("changeShare",{share:true})
+                this.$store.commit("changeShare",{showShare:true})
             },
+            cancel(){
+                console.log(1)
+                this.$store.commit("changeShare",{showShare:false})
+            }
         },
+        computed:{
+            ...mapState(["showShare"])
+        }
 
     }
 </script>
