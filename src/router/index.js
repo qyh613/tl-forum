@@ -14,8 +14,7 @@ import Forget from "../views/Mine/components/Forget";
 // import ModifypersonalInformation from "../views/Mine/components/ModifypersonalInformation";
 
 import FoundDetails from "../views/Index/components/FoundDetails";
-// import Attention from "../views/Index/Attention";
-// import Recommend from "../views/Index/Recommend";
+
 
 
 Vue.use(VueRouter)
