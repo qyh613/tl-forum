@@ -46,6 +46,15 @@ export function getPostReply(parentId) {
 }
 
 
+//  发布回复
+export function getComments(postsId,commentContent) {
+    const Comments = new  FormData()
+    Comments.append("postsId",postsId)
+    Comments.append("commentContent",commentContent)
+    return request
+        .post('/api/bbs/bbsComment/site/add',Comments)
+}
+
 
 // 发现页
 export function getFound(pageNum,pageSize) {

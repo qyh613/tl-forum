@@ -1,7 +1,7 @@
 <template>
     <div>
-        <van-nav-bar title="帖子详情" left-text="返回" right-text="按钮" left-arrow
-                     @click-left="onClickLeft" @click-right="onClickRight"/>
+        <van-nav-bar title="帖子详情" left-text="返回" left-arrow
+                     @click-left="onClickLeft"/>
         <div class="content">
             <div class="title">
                 <van-image round width="3rem" height="3rem" :src="postList.avatar"/>
@@ -63,13 +63,18 @@
                 </div>
             </van-popup>
         </div>
+
+        <div class="commentsBox">
+            <input type="text" placeholder="发表评论" v-model="commentsContent">
+            <button @click="release">发布</button>
+        </div>
     </div>
 </template>
 
 <script>
     // 帖子详情 ****************************************
     import {Toast} from 'vant';
-    import {getPostComment, getPostDetails, getPostReply} from "../../../api/Index-api";
+    import {getComments, getPostComment, getPostDetails, getPostReply} from "../../../api/Index-api";
 
     export default {
         name: "PostDetails",
@@ -80,15 +85,13 @@
                 show:false,
                 comment:[],
                 postReply:[],
-                fewLayer:0
+                fewLayer:0,
+                commentsContent:"",
             }
         },
         methods: {
             onClickLeft() {
                 this.$router.push("/index")
-            },
-            onClickRight() {
-                Toast('按钮');
             },
             examineReply(commentId,item,index){
                 this.fewLayer= index + 1
@@ -97,6 +100,17 @@
                 // 帖子评论回复
                 getPostReply(commentId).then(res=>{
                     this.postReply = res.rows
+                })
+            },
+            // 发布评论
+            release(){
+                console.log(this.commentsContent)
+                getComments(this.$route.params.postsId,this.commentsContent).then(res=>{
+                    console.log(res)
+                    if(res.code !== 0){
+                        Toast(res.msg);
+                        this.$router.push("/mine/login")
+                    }
                 })
             }
         },
@@ -140,12 +154,6 @@
         text-align: center;
         font-size: 16px;
     }
-
-
-
-
-
-
 
     .title {
         display: flex;
@@ -217,6 +225,35 @@
             .ReplyContent {
                 padding: 10px 0;
             }
+        }
+    }
+    .commentsBox{
+        position: fixed;
+        left: 0;
+        bottom: -1px;
+        height: 40px;
+        width: 100%;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+        line-height: 40px;
+        text-align: center;
+        input{
+            height: 30px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            width: 50%;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+        }
+        button{
+            width: 20%;
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            vertical-align: middle;
         }
     }
 </style>
