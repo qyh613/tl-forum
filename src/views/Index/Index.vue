@@ -1,17 +1,19 @@
 <template>
     <div>
         <div class="headNav">
-            <van-tabs v-model="active" animated >
-                <van-tab title="关注">
-                    <Attention />
-                </van-tab>
-                <van-tab title="推荐">
-                    <Recommend categoryId=""/>
-                </van-tab>
-                <van-tab title="发现">
-                    <Found />
-                </van-tab>
-            </van-tabs>
+            <div class="HeaderTab">
+                <van-tabs v-model="active" animated>
+                    <van-tab title="新闻">
+                        <NewsList />
+                    </van-tab>
+                    <van-tab title="推荐">
+                        <Recommend categoryId=""/>
+                    </van-tab>
+                    <van-tab title="发现">
+                        <Found />
+                    </van-tab>
+                </van-tabs>
+            </div>
             <router-link tag="div" class="search" to="search">
                 <van-icon name="search" />
             </router-link>
@@ -24,10 +26,10 @@
 </template>
 
 <script>
-    import Attention from "./components/Attention";
     import Recommend from "./components/Recommend";
     import Found from "./components/Found";
     import {mapState} from "vuex";
+    import NewsList from "../News/NewsList";
 
     export default {
         name: "Index",
@@ -51,7 +53,7 @@
             }
         },
         components: {
-            Attention,
+            NewsList,
             Recommend,
             Found
         },
@@ -73,12 +75,13 @@
     .headNav {
         /*display: flex;*/
         position: relative;
-
-        /deep/ .van-tabs--line .van-tabs__wrap {
-            height: 44px;
-            padding-right: 60px;
-
+        .HeaderTab {
+            /deep/ .van-tabs--line .van-tabs__wrap {
+                /*height: 44px;*/
+                padding-right: 60px;
+            }
         }
+
 
         .search {
             position: absolute;

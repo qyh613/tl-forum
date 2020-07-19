@@ -23,7 +23,7 @@ import {
     Form,
     Icon,
     Overlay,
-    Search,
+    Search, Swipe, SwipeItem,
     Tab,
     Tabbar,
     TabbarItem,
@@ -33,11 +33,10 @@ import {
 
 Vue.use(VueAxios, axios)
 
-Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search).use(Form).use(Field).use(CountDown).use(Uploader);
+Vue.use(Search).use(Form).use(Field).use(CountDown).use(Uploader);
 
 Vue.use(Cell);
 Vue.use(CellGroup);
-Vue.use(Field)
 import { RadioGroup, Radio } from 'vant';
 import {
   Image as VanImage,
@@ -46,7 +45,7 @@ import {
  NavBar, Popup, ShareSheet
 } from 'vant';
 Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Overlay).use(Tab).use(Tabs).use(Search).use(VanImage)
-    .use(List).use(PullRefresh).use(Cell).use(NavBar).use(Popup).use(ShareSheet);
+    .use(List).use(PullRefresh).use(Cell).use(NavBar).use(Popup).use(ShareSheet).use(Swipe).use(SwipeItem);
 
 /* 导入icon */
 import './assets/font/iconfont'
@@ -54,7 +53,6 @@ import './assets/font/iconfont'
 Vue.use(Radio);
 Vue.use(RadioGroup);
 import { Toast } from 'vant';
-// import { NavBar } from 'vant';
 
 Vue.use(NavBar);
 Vue.use(Toast);

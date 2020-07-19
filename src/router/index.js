@@ -14,6 +14,7 @@ import Forget from "../views/Mine/components/Forget";
 import FoundDetails from "../views/Index/components/FoundDetails";
 import PostDetails from "../views/Index/components/PostDetails";
 import store from "../store/index";
+import NewsDetails from "../views/News/components/NewsDetails";
 
 
 Vue.use(VueRouter)
@@ -101,6 +102,9 @@ const routes = [
     },{
         path: '/post/details/:postsId',
         component: PostDetails,
+    },{
+        path: '/newsDetails/:articleId',
+        component: NewsDetails,
     }
 
 ]
