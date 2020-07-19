@@ -111,6 +111,13 @@
                         Toast(res.msg);
                         this.$router.push("/mine/login")
                     }
+                    // 帖子评论
+                    getPostComment(this.$route.params.postsId).then(res => {
+                        // console.log(res.rows)
+                        if (res.code === 0) {
+                            this.PostComment = res.rows
+                        }
+                    })
                 })
             }
         },
