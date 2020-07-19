@@ -15,7 +15,7 @@
         <div class="photo">
 
             <div class="photo-img"><img :src="userInfo.avatar">
-                <van-icon name="photograph"/>
+<!--                <van-icon name="photograph"/>-->
 
             </div>
             <div class="cell-box">
@@ -72,6 +72,7 @@
             img {
                 height: 100px;
                 width: 100px;
+                border-radius: 20px;
                 /*border: 1px solid black;*/
                 margin-top: 20px;
 

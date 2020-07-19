@@ -15,42 +15,37 @@
                 <router-link :to="'/mine/post/details/'+item.postsId" tag="div">
                     <div class="title">
                         <van-image round width="3rem" height="3rem" :src="item.avatar"/>
-                        <span class="postName">{{item.userName}}</span>
+                        <p>楼主{{item.userName}}</p>
+
                     </div>
+                    <p><span  class="postName">{{'《'+item.title+'》'}}</span><span>发布时间{{item.sendTime}}</span></p>
                     <div>
                         <h3>{{item.intro}}</h3>
                         <img :src="item.coverImgUrl" class="postImg">
                     </div>
                 </router-link>
-                <div class="operation">
-                    <div @click="BBSShare">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-fenxiang"></use>
-                        </svg>
-                    </div>
-                    <div>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-xiaoxi"></use>
-                        </svg>
-                    </div>
-                    <div >
-<!--                        <van-icon name="delete" ></van-icon>-->
-                    </div>
-                </div>
+
+                <router-link :to="'/mine/changePost/'+item.postsId+'/'+item.title" tag="div" class="change">
+                    <van-icon name="records"/>
+                </router-link>
+
             </div>
+
         </div>
+
     </div>
 </template>
 
 <script>
     import {deletepost, getMyParticipate} from "../../../api/LogIn-api";
-    // import {Toast} from "vant";
+
 
     export default {
         name: "Participate",
         data() {
             return {
                 list: [],
+
 
             }
         },
@@ -66,23 +61,28 @@
             },
             deletePost() {
                 console.log(this.$route.params.postsId)
-                deletepost(this.$route.params.postsId).then(res=>{
+                deletepost(this.$route.params.postsId).then(res => {
                     console.log(res)
                 })
             },
             // showPopup() {
             //     this.show = true;
             // },
-            BBSShare() {
-                this.$store.commit("changeShare",{showShare:true})
-            },
+            // BBSShare() {
+            //     this.$store.commit("changeShare",{showShare:true})
+            // },
+            // cancel(){
+            //     console.log(1)
+            //     this.$store.commit("changeShare",{showShare:false})
+            // },
+            // clickOverlay(){
+            //     this.$store.commit("changeShare",{showShare:false})
+            // },
         }
     }
 </script>
 
 <style scoped lang="less">
-
-
 
 
     .postList {
@@ -96,11 +96,7 @@
                 display: flex;
                 align-items: center;
 
-                .postName {
-                    display: inline-block;
-                    font-size: 16px;
-                    padding: 0px 10px;
-                }
+
             }
 
             h3 {
@@ -127,5 +123,16 @@
 
             }
         }
+    }
+
+    .change {
+        color: black;
+        font-size: 20px;
+        text-align: center;
+    }
+    .postName {
+
+        font-size: 18px;
+        padding: 10px 10px;
     }
 </style>

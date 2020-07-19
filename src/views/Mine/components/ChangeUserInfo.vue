@@ -142,7 +142,7 @@
                 width: 100px;
                 /*border: 1px solid black;*/
                 margin-top: 20px;
-                border-radius: 20px;
+                border-radius: 5px;
 
 
             }
