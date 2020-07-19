@@ -43,6 +43,17 @@ export function getPostReply(parentId) {
 }
 
 
+// 回复评论
+export function getReplyComments(postsId,parentId,commentContent) {
+    const Reply = new  FormData()
+    Reply.append("postsId",postsId)
+    Reply.append("parentId",parentId)
+    Reply.append("commentContent",commentContent)
+    return request
+        .post('/api/bbs/bbsComment/site/reply/add',Reply)
+}
+
+
 //  发布回复
 export function getComments(postsId,commentContent) {
     const Comments = new  FormData()

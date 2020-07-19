@@ -47,6 +47,7 @@
                         </div>
                     </div>
                     <p class="PublishContent">{{comment.commentContent}}</p>
+<!--                    <div class="reply">回复</div>-->
                 </div>
                 <div style="background-color:rgb(242, 238, 238); height: 3px"></div>
                 <div class="ReplyContentBox">
@@ -59,8 +60,14 @@
                             </div>
                         </div>
                         <p class="PublishContent">{{item.commentContent}}</p>
+                        <div class="commentsBox">
+                            <input type="text" placeholder="回复评论" v-model="replyComments">
+                            <button @click="reply(item.parentId,item.postsId)">回复</button>
+                        </div>
                     </div>
+
                 </div>
+
             </van-popup>
         </div>
 
@@ -74,7 +81,7 @@
 <script>
     // 帖子详情 ****************************************
     import {Toast} from 'vant';
-    import {getComments, getPostComment, getPostDetails, getPostReply} from "../../../api/Index-api";
+    import {getComments, getPostComment, getPostDetails, getPostReply, getReplyComments} from "../../../api/Index-api";
 
     export default {
         name: "PostDetails",
@@ -87,6 +94,7 @@
                 postReply:[],
                 fewLayer:0,
                 commentsContent:"",
+                replyComments:"",
             }
         },
         methods: {
@@ -100,6 +108,7 @@
                 // 帖子评论回复
                 getPostReply(commentId).then(res=>{
                     this.postReply = res.rows
+                    console.log(this.postReply)
                 })
             },
             // 发布评论
@@ -113,11 +122,19 @@
                     }
                     // 帖子评论
                     getPostComment(this.$route.params.postsId).then(res => {
-                        // console.log(res.rows)
                         if (res.code === 0) {
                             this.PostComment = res.rows
                         }
                     })
+                })
+            },
+            // 回复 评论
+            reply(parentId,postsId){
+                console.log(this.replyComments)
+                console.log(parentId)
+                console.log(postsId)
+                getReplyComments(postsId,parentId,this.replyComments).then(res=>{
+                    console.log(res)
                 })
             }
         },
@@ -151,9 +168,19 @@
     /* 评论的回复 */
     .published {
         padding: 20px 20px 10px;
+        overflow: hidden;
     }
     .PublishContent {
         padding: 5px 0 0px 58px;
+    }
+    .reply {
+        width: 20%;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        text-align: center;
+        float: right;
+        height: 30px;
+        line-height: 30px;
     }
     /*楼层数*/
     .layer {
