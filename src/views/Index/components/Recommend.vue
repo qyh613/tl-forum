@@ -21,12 +21,12 @@
                                     <use xlink:href="#icon-fenxiang"></use>
                                 </svg>
                             </div>
-                            <div>
+                            <div @click="commentsList(item.postsId)">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-xiaoxi"></use>
                                 </svg>
                             </div>
-                            <div>
+                            <div @click="praise">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-zan"></use>
                                 </svg>
@@ -47,7 +47,9 @@
         getPostList, getPostSearch
     } from "../../../api/Index-api";
     import {mapState} from "vuex";
-
+    import Vue from 'vue';
+    import { Toast } from 'vant';
+    Vue.use(Toast);
     export default {
         name: "Recommend",
         data() {
@@ -59,9 +61,11 @@
                 pageNum: 1,
                 options: [
                     [
-                        { name: '微信', icon: 'wechat' },
-                        { name: '微博', icon: 'weibo' },
-                        { name: 'QQ', icon: 'qq' },
+                        { name: '微信好友', icon: 'wechat' },
+                        { name: '朋友圈', icon: 'wechat' },
+                        { name: 'QQ好友', icon: 'qq' },
+                        { name: 'QQ空间', icon: 'qq' },
+                        { name: '新浪微博', icon: 'weibo' },
                     ],
                     [
                         { name: '复制链接', icon: 'link' },
@@ -103,6 +107,14 @@
             },
             clickOverlay(){
                 this.$store.commit("changeShare",{showShare:false})
+            },
+            // 点赞 情提示
+            praise(){
+                Toast('点赞成功');
+            },
+            // 点击评论
+            commentsList(postsId){
+                this.$router.push("/post/details/"+postsId)
             }
         },
         computed:{
