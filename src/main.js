@@ -60,6 +60,17 @@ import { Dialog } from 'vant';
 
 
 Vue.use(Dialog);
+// import { Dialog } from 'vant';
+
+// import { Overlay } from 'vant';
+
+Vue.use(Overlay);
+import { ActionSheet } from 'vant';
+
+Vue.use(ActionSheet);
+// import { Uploader } from 'vant';
+//
+// Vue.use(Uploader);
 Vue.config.productionTip = false
 
 new Vue({

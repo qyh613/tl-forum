@@ -44,10 +44,7 @@ export function getCode(mobile) {
     return request.get(`/api/short-message/vcode/${mobile}`)
 }
 //找回密码
-// /api/password/forget/
-// export function (mobile) {
-//     return request.get(`/api/short-message/vcode/${mobile}`)
-// }
+
 export function getForget(loginName,phonenumber, code, password,) {
     const formData = new FormData();
 
@@ -66,4 +63,24 @@ export function changeImg(file) {
 //退出登录
 export function  logOut() {
     return request.get(`/api/logout`)
+}
+//我参与的
+export function  getMyParticipate() {
+    return request.post(`/api/bbs/bbsPosts/join/list`)
+}
+//修改帖子
+export  function  changePost(postsId,title) {
+    const formData = new FormData();
+    formData.append("postsId", postsId);
+    formData.append("title", title);
+    // return request.post('/api/system/user/profile/update/avatar/nos', formData)
+    return request.post(`/api/bbs/bbsPosts/site/edit?`,formData)
+
+}
+//删除帖子
+
+export function deletepost(ids) {
+    const formData=new FormData();
+    formData.append('ids',ids);
+    return request.post('/api/bbs/bbsPosts/site/remove',formData)
 }

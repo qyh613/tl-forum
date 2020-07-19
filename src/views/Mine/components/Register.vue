@@ -32,7 +32,7 @@
                     placeholder="请输入手机号"
             >
                 <template #button>
-                    <van-button size="small" type="primary"  @click="onCode">发送验证码</van-button>
+                    <van-button size="small" type="primary"  @click="onCode">{{texts}}</van-button>
                 </template>
             </van-field>
 <!--            <van-field v-model="tel" type="tel" label="手机号" class="tel"/>-->
@@ -43,6 +43,7 @@
             <!-- 允许输入数字，调起带符号的纯数字键盘 -->
             <!--            <van-field v-model="number" type="number" label="数字"/>-->
             <button class="regist" @click="onRegist">立即注册</button>
+            <p style="margin-top: 20px;margin-left: 20px">我已阅读并接受《天亮论坛用户服务协议》、《隐私政策》</p>
         </div>
     </div>
 </template>
@@ -64,6 +65,9 @@
                 passwordOne: '',
                 tel: '',
                 code: '',
+                count: '',
+                timer: null,
+                texts: '获取验证码',
 
             };
 
@@ -88,6 +92,22 @@
             onCode(){
                 getCode(this.tel).then(res=>{
                     if (res.code==0){
+                        const TIME_COUNT = 60;
+                        if (!this.timer) {
+                            this.count = TIME_COUNT;
+                            this.texts = this.count+'S';
+                            this.timer = setInterval(() => {
+                                if (this.count > 0 && this.count <= TIME_COUNT) {
+                                    this.count--;
+                                    this.texts = this.count+'S';
+                                } else {
+                                    clearInterval(this.timer);
+                                    this.timer = null;
+                                    this.texts = '重新获取';
+                                }
+                            }, 1000)
+                        }
+
                         Toast.success('获取验证码成功');
                         // this.$router.push("personalDetails")
                     }
@@ -130,8 +150,8 @@
     }
 
     .regist {
-        width: 250px;
-        height: 30px;
+        width: 317px;
+        height: 40px;
         background-color: #3483f6;
         outline: none;
         border-radius: 10px;

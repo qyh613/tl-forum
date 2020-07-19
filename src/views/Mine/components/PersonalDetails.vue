@@ -14,7 +14,7 @@
 
             <div class="photo-img">
 
-                <img :src="userInfo.avatar">
+                <img :src="userInfo.avatar" alt="">
 <!--                <van-icon name="photograph"/>-->
                 <p>{{userInfo.userName}} </p></div>
         </div>
@@ -53,7 +53,9 @@
                 Toast('返回');
                 this.$router.push("/index")
             },
-
+            // onClickRight() {
+            //     Toast('按钮');
+            // },
             logOut(){
                 Dialog.confirm({
                     // title: '标题',
@@ -65,6 +67,7 @@
                             console.log(res)
                             this.$store.commit("changeLogin", {isLogin: false})
                             this.$router.push("/mine/login")
+                            Toast('退出登陆成功');
                         })
                     })
                     .catch(() => {

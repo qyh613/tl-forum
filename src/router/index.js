@@ -14,6 +14,8 @@ import Forget from "../views/Mine/components/Forget";
 import FoundDetails from "../views/Index/components/FoundDetails";
 import PostDetails from "../views/Index/components/PostDetails";
 import store from "../store/index";
+import Publish from "../views/Publish/Publish";
+import MyPostDetails from "../views/Mine/components/MyPostDetails";
 import NewsDetails from "../views/News/components/NewsDetails";
 
 
@@ -87,6 +89,14 @@ const routes = [
                         path: '/mine/forget',
                         component:Forget,
                     },
+                    {
+                        path: '/mine/post/details/:postsId',
+                        component: MyPostDetails,
+                        meta: {
+                            //需要登录才能访问
+                            isAuth: true
+                        }
+                    },
                 ]
 
             }, {
@@ -102,6 +112,14 @@ const routes = [
     },{
         path: '/post/details/:postsId',
         component: PostDetails,
+    },
+    {
+        path: '/publish',
+        component: Publish,
+        meta: {
+            //需要登录才能访问
+            isAuth: true
+        }
     },{
         path: '/newsDetails/:articleId',
         component: NewsDetails,
