@@ -70,7 +70,7 @@
         },
         methods:{
             onClickLeft() {
-                Toast('返回');
+                // Toast('返回');
                 this.$router.push("/mine")
             },
             onCode(){
@@ -79,11 +79,11 @@
                         const TIME_COUNT = 60;
                         if (!this.timer) {
                             this.count = TIME_COUNT;
-                            this.texts = this.count+'S';
+                            this.texts = this.count+'S后重新获取';
                             this.timer = setInterval(() => {
                                 if (this.count > 0 && this.count <= TIME_COUNT) {
                                     this.count--;
-                                    this.texts = this.count+'S';
+                                    this.texts = this.count+'S后重新获取';
                                 } else {
                                     clearInterval(this.timer);
                                     this.timer = null;
@@ -95,14 +95,14 @@
                         Toast.success('获取验证码成功');
                         // this.$router.push("personalDetails")
                     }
-                    console.log(res)
+                    // console.log(res)
 
                 })
             },
             // loginName,phonenumber, code, password,
             forget(){
                 getForget(this.loginName,this.tel,this.code,this.password).then(res=>{
-                    console.log(res)
+                    // console.log(res)
                     if (res.code==0){
                         Toast.success('找回密码成功');
                         // this.$router.push("personalDetails")

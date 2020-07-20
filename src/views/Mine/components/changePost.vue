@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import {changePost} from "../../../api/LogIn-api";
+    // import {changePost} from "../../../api/LogIn-api";
 
     export default {
         name: "changePost",

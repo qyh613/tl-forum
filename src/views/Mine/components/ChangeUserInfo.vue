@@ -45,7 +45,7 @@
 
 <script>
     import {changeImg, changeUserInfo, getUserInfo} from "../../../api/LogIn-api";
-    import {Toast} from "vant";
+    // import {Toast} from "vant";
 
     export default {
         name: "ChangeUserInfo",
@@ -71,21 +71,21 @@
         },
         methods: {
             onClickLeft() {
-                Toast('返回');
+                // Toast('返回');
                 this.$router.push("/mine/personalDetails")
             },
 
             onSumbit() {
                 // 修改个人信息接口
 
-                console.log(this.radio)
+                // console.log(this.radio)
                 this.userInfo.sex = this.radio
 
-                console.log(this.userInfo.sex)
+                // console.log(this.userInfo.sex)
                 // eslint-disable-next-line
                 // debugger
                 changeUserInfo(this.userInfo).then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if (res.code == 0) {
                         getUserInfo().then(res => {
                             console.log(res.data)
@@ -99,13 +99,14 @@
                 this.$refs.img.click()
             },
             uploadImg(e){
-                console.log(e)
+                // console.log(e)
+                // console.log(e.target.files[0])
                 changeImg(e.target.files[0]).then(()=>{
                     // console.log(res)
                     getUserInfo().then(res => {
 
                         this.userInfo = res.data
-                        console.log(this.userInfo.sex)
+                        // console.log(this.userInfo.sex)
                     })
                 })
             }
@@ -117,6 +118,7 @@
 <style scoped lang="less">
     .change-box {
         text-align: center;
+
     }
 
     h2 {
@@ -173,6 +175,7 @@
         /*margin-left: 55px;*/
         margin-top: 20px;
         color: #ffffff;
+        cursor: pointer;
     }
 
 </style>

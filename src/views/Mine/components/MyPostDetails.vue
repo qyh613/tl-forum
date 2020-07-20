@@ -98,7 +98,7 @@
                 // 帖子评论回复
                 getPostReply(commentId).then(res => {
                     this.postReply = res.rows
-                    console.log(res.rows)
+                    // console.log(res.rows)
                 })
             },
             delectPost(){

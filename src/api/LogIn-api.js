@@ -84,3 +84,12 @@ export function deletepost(ids) {
     formData.append('ids',ids);
     return request.post('/api/bbs/bbsPosts/site/remove',formData)
 }
+
+
+//上传图片
+export  function uploadPictures (file,fileUseForEnum) {
+    const formData=new FormData();
+    formData.append('file',file);
+    formData.append('fileUseForEnum',fileUseForEnum);
+    return request.post('/api/nos/upload/image',formData)
+}

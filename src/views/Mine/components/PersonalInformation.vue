@@ -31,7 +31,7 @@
 
 <script>
     import {getUserInfo} from "../../../api/LogIn-api";
-    import {Toast} from "vant";
+    // import {Toast} from "vant";
 
     export default {
         name: "PersonalInformation",
@@ -44,12 +44,12 @@
             getUserInfo().then(res => {
 
                 this.userInfo = res.data
-                console.log(this.userInfo.sex)
+                // console.log(this.userInfo.sex)
             })
         },
         methods: {
             onClickLeft() {
-                Toast('返回');
+                // Toast('返回');
                 this.$router.push("/mine/personalDetails")
             },
         },

@@ -24,7 +24,7 @@
                     :rules="[{ required: true, message: '请填写密码' }]"
             />
             <div style="margin: 16px;">
-                <div style="margin-bottom: 10px; font-size: 16px">
+                <div style="margin-bottom: 10px; font-size: 16px;     cursor: pointer;">
                     <router-link style="margin-right: 50px" to="register">注册</router-link>
                     <router-link to="Forget">忘记密码</router-link></div>
                 <van-button round block type="info" native-type="submit">
@@ -53,7 +53,7 @@
         methods: {
             onSubmit() {
                 loginApi(this.username, this.password).then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if (res.code==0){
                         Toast.success('登陆成功');
                         this.$router.push("/mine/personalDetails")
@@ -65,8 +65,8 @@
 
         },
         created() {
-            getUserInfo().then(res=>{
-                console.log(res)
+            getUserInfo().then(()=>{
+                // console.log(res)
             })
         }
 
@@ -100,6 +100,7 @@
     .van-cell__value {
         border-radius: 10px;
         border: 1px solid black;
+
     }
 
 </style>

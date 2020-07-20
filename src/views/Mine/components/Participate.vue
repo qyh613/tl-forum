@@ -25,9 +25,9 @@
                     </div>
                 </router-link>
 
-                <router-link :to="'/mine/changePost/'+item.postsId+'/'+item.title" tag="div" class="change">
-                    <van-icon name="records"/>
-                </router-link>
+<!--                <router-link :to="'/mine/changePost/'+item.postsId+'/'+item.title" tag="div" class="change">-->
+<!--                    <van-icon name="records"/>-->
+<!--                </router-link>-->
 
             </div>
 
@@ -51,7 +51,7 @@
         },
         created() {
             getMyParticipate().then(res => {
-                console.log(res)
+                // console.log(res)
                 this.list = res.rows
             })
         },
@@ -60,24 +60,12 @@
                 this.$router.push("/mine/personalDetails")
             },
             deletePost() {
-                console.log(this.$route.params.postsId)
-                deletepost(this.$route.params.postsId).then(res => {
-                    console.log(res)
+                // console.log(this.$route.params.postsId)
+                deletepost(this.$route.params.postsId).then(() => {
+                    // console.log(res)
                 })
             },
-            // showPopup() {
-            //     this.show = true;
-            // },
-            // BBSShare() {
-            //     this.$store.commit("changeShare",{showShare:true})
-            // },
-            // cancel(){
-            //     console.log(1)
-            //     this.$store.commit("changeShare",{showShare:false})
-            // },
-            // clickOverlay(){
-            //     this.$store.commit("changeShare",{showShare:false})
-            // },
+
         }
     }
 </script>

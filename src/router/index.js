@@ -17,7 +17,7 @@ import store from "../store/index";
 import Publish from "../views/Publish/Publish";
 import MyPostDetails from "../views/Mine/components/MyPostDetails";
 import NewsDetails from "../views/News/components/NewsDetails";
-import changePost from "../views/Mine/components/changePost";
+// import changePost from "../views/Mine/components/changePost";
 
 
 Vue.use(VueRouter)
@@ -98,14 +98,14 @@ const routes = [
                             isAuth: true
                         }
                     },
-                    {
-                        path: '/mine/changePost/:postsId/:title',
-                        component:changePost ,
-                        meta: {
-                            //需要登录才能访问
-                            isAuth: true
-                        }
-                    },
+                    // {
+                    //     path: '/mine/changePost/:postsId/:title',
+                    //     component:changePost ,
+                    //     meta: {
+                    //         //需要登录才能访问
+                    //         isAuth: true
+                    //     }
+                    // },
                 ]
 
             }, {

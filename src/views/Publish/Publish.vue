@@ -25,7 +25,7 @@
         >
 
         </van-field>
-        <van-uploader v-model="fileList" :after-read="afterRead"  multiple/>
+        <van-uploader v-model="fileList" :after-read="afterRead" multiple/>
         <!--        专题列表-->
         <ul class="specialBox">
             <li v-for="(item,index) in list" :key="index" :class="{active:index==isActive}"
@@ -34,14 +34,13 @@
         </ul>
 
 
-
     </div>
 </template>
 
 <script>
     import {Toast} from "vant";
     import {createPost, getFound} from "../../api/Index-api";
-    import {getMyParticipate} from "../../api/LogIn-api";
+    import {getMyParticipate, uploadPictures} from "../../api/LogIn-api";
 
     export default {
         name: "Publish",
@@ -54,19 +53,17 @@
                 title: "",
                 intro: "",
                 coverImgUrl: {},
-                fileList:[]
+                fileList: []
 
             }
         },
 
         methods: {
 
-            afterRead(a) {
+            afterRead(file) {
                 // 此时可以自行将文件上传至服务器
-                console.log(a);
-                this.coverImgUrl=a.content
 
-
+                this.coverImgUrl = file
 
             },
             onClickLeft() {
@@ -74,24 +71,27 @@
                 this.$router.push("/index")
             },
             onClickRight() {
-                // categoryId, title, intro, coverImgUrl
-                createPost(this.categoryId, this.title, this.intro, this.coverImgUrl.content).then(res => {
-                    // console.log(this.categoryId)
-                    // console.log( res)
+                uploadPictures(this.coverImgUrl.file, "BBS").then(res => {
 
-                    if (res.code == 0) {
-                        getMyParticipate().then(res => {
+                    console.log(res)
+                    // categoryId, title, intro, coverImgUrl
+                    createPost(this.categoryId, this.title, this.intro, res.url).then(res => {
+                        // console.log(this.categoryId)
+                        // console.log( res)
+
+                        if (res.code == 0) {
+                            getMyParticipate().then(res => {
+                                console.log(res)
+                                // this.list = res.rows
+                            })
+                            Toast('发布成功');
+                            this.$router.push("/index")
+                        } else {
                             console.log(res)
-                            // this.list = res.rows
-                        })
-                        Toast('发布成功');
-                        // this.$router.push("/index")
-                    } else {
-                        console.log(res)
-                        Toast('发布失败');
-                    }
+                            Toast('发布失败');
+                        }
 
-
+                    })
                 })
 
             },
@@ -112,6 +112,8 @@
 
                 }
             })
+
+
         }
     }
 </script>
