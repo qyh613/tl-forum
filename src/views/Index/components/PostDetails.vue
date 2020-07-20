@@ -110,13 +110,13 @@
             },
             // 发布评论
             release() {
-                console.log(this.commentsContent)
                 getComments(this.$route.params.postsId, this.commentsContent).then(res => {
-                    console.log(res)
                     if (res.code !== 0) {
                         Toast(res.msg);
                         this.$router.push("/mine/login")
                     }
+                    Toast('评论成功');
+                    this.commentsContent = ""
                     // 帖子评论
                     getPostComment(this.$route.params.postsId).then(res => {
                         if (res.code === 0) {
@@ -130,6 +130,7 @@
                 getReplyComments(this.$route.params.postsId, this.id, this.replyComments).then(res => {
                     if(res.code == 0){
                         Toast('评论成功');
+                        this.replyComments = ""
                         getPostReply(this.id).then(res => {
                             this.postReply = res.rows
                         })
@@ -138,7 +139,6 @@
             },
         },
         created() {
-            // console.log(this.$route.params.postsId)
             // 帖子详情
             getPostDetails(this.$route.params.postsId).then(res => {
                 if (res.code === 0) {
@@ -243,12 +243,11 @@
         }
 
         .commentList {
-            padding: 0 20px;
+            padding: 0 20px 40px;
 
             li {
                 width: 100%;
-                padding-bottom: 30px;
-
+                padding-bottom: 15px;
                 .commentContent {
                     padding: 10px 0 10px 58px;
                     font-size: 15px;
@@ -278,7 +277,7 @@
         width: 100%;
         background-color: #fff;
         border-top: 1px solid #ccc;
-        line-height: 40px;
+        line-height: 36px;
         text-align: center;
 
         input {
