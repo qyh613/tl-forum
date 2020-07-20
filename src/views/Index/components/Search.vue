@@ -37,9 +37,10 @@
                 this.$router.push("/index")
             },
             search(){
-                console.log(this.keyWord)
                 this.list.push(this.keyWord)
-                console.log(this.list)
+                let setList = new Set(this.list)
+
+                this.list = Array.from(setList)
                 localStorage.setItem("keyWord",JSON.stringify(this.list))
             },
             // 删除一个
@@ -55,6 +56,8 @@
         },
         created() {
             this.list=JSON.parse(localStorage.getItem("keyWord"))
+            // this.list = new Set(JSON.parse(localStorage.getItem("keyWord")))
+
             if(this.list==null){
                 this.list=[]
             }

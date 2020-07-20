@@ -22,6 +22,7 @@
         </div>
         <van-share-sheet :value="showShare" title="立即分享给好友" :options="options" @cancel="cancel"
                          @click-overlay="clickOverlay"/>
+
     </div>
 </template>
 
@@ -55,7 +56,7 @@
         components: {
             NewsList,
             Recommend,
-            Found
+            Found,
         },
         computed:{
             ...mapState(["showShare"])
@@ -94,5 +95,7 @@
             text-align: center;
             color: #6e6d6d;
         }
+
+
     }
 </style>
