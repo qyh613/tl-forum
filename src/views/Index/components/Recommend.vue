@@ -193,7 +193,11 @@
                 justify-content: space-between;
                 font-size: 20px;
                 padding: 10px;
-
+                div{
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
             }
         }
     }

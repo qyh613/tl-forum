@@ -4,6 +4,9 @@
             <van-search v-model="keyWord" show-action placeholder="请输入搜索关键词"
                     @cancel="onCancel" autofocus type="search" @focus="value"/>
         </form>
+        <div class="history">
+            这是搜索历史
+        </div>
         <Recommend :keyWord="keyWord"/>
     </div>
 </template>

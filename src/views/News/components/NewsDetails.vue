@@ -103,6 +103,7 @@
         div{
             width: 30%;
             text-align: center;
+
         }
     }
 </style>
