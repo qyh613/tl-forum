@@ -26,10 +26,8 @@
                                     <use xlink:href="#icon-xiaoxi"></use>
                                 </svg>
                             </div>
-                            <div @click="praise">
-                                <svg class="icon" aria-hidden="true">
-                                    <use xlink:href="#icon-zan"></use>
-                                </svg>
+                            <div @click="praise" :class="pointPraise?'praise':''">
+                                <van-icon name="good-job-o" />
                             </div>
                         </div>
                     </div>
@@ -73,6 +71,7 @@
                         { name: '二维码', icon: 'qrcode' },
                     ],
                 ],
+                pointPraise:false,
             }
         },
         props: {
@@ -110,7 +109,15 @@
             },
             // 点赞 情提示
             praise(){
-                Toast('点赞成功');
+
+                if(this.pointPraise){
+                    Toast('取消点赞');
+                    this.pointPraise = false
+                }else {
+                    Toast('点赞成功');
+                    this.pointPraise = true
+                }
+
             },
             // 点击评论
             commentsList(postsId){
@@ -137,6 +144,12 @@
 </script>
 
 <style scoped lang="less">
+    /*赞*/
+    .praise {
+        color: red;
+    }
+
+
     .postBox {
         padding-bottom: 50px;
     }
