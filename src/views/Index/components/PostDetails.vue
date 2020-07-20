@@ -13,7 +13,7 @@
             </div>
             <div class="operation">
                 <div>
-                    <van-icon name="good-job-o" />
+                    <van-icon name="good-job-o"/>
                 </div>
             </div>
         </div>
@@ -58,17 +58,15 @@
                             </div>
                         </div>
                         <p class="PublishContent">{{item.commentContent}}</p>
-                        <div class="commentsBox">
-                            <input type="text" placeholder="回复评论" v-model="replyComments">
-                            <button @click="reply(item.parentId,item.postsId)">回复</button>
-                        </div>
+
                     </div>
-
                 </div>
-
+                <div class="commentsBox">
+                    <input type="text" placeholder="回复评论" v-model="replyComments">
+                    <button @click="reply">回复</button>
+                </div>
             </van-popup>
         </div>
-
         <div class="commentsBox">
             <input type="text" placeholder="发表评论" v-model="commentsContent">
             <button @click="release">发布</button>
@@ -93,6 +91,7 @@
                 fewLayer: 0,
                 commentsContent: "",
                 replyComments: "",
+                id:''
             }
         },
         methods: {
@@ -103,10 +102,10 @@
                 this.fewLayer = index + 1
                 this.show = true
                 this.comment = item
+                this.id=commentId
                 // 帖子评论回复
                 getPostReply(commentId).then(res => {
                     this.postReply = res.rows
-                    console.log(this.postReply)
                 })
             },
             // 发布评论
@@ -127,14 +126,16 @@
                 })
             },
             // 回复 评论
-            reply(parentId, postsId) {
-                console.log(this.replyComments)
-                console.log(parentId)
-                console.log(postsId)
-                getReplyComments(postsId, parentId, this.replyComments).then(res => {
-                    console.log(res)
+            reply() {
+                getReplyComments(this.$route.params.postsId, this.id, this.replyComments).then(res => {
+                    if(res.code == 0){
+                        Toast('评论成功');
+                        getPostReply(this.id).then(res => {
+                            this.postReply = res.rows
+                        })
+                    }
                 })
-            }
+            },
         },
         created() {
             // console.log(this.$route.params.postsId)
@@ -152,8 +153,6 @@
                     this.PostComment = res.rows
                 }
             })
-
-
         }
     }
 </script>
@@ -216,7 +215,7 @@
 
     .content {
         border-bottom: 0.5px solid #ebedf0;
-        padding: 10px 20px;
+        padding: 20px 20px 50px;
 
         h3 {
             font-weight: 100;
