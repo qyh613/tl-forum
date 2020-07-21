@@ -96,7 +96,7 @@
         },
         methods: {
             onClickLeft() {
-                this.$router.push("/index")
+                this.$router.back()
             },
             examineReply(commentId, item, index) {
                 this.fewLayer = index + 1

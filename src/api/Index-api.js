@@ -6,6 +6,8 @@ export function getPostList(pageNum, pageSize, categoryId) {
     formData.append("pageNum", pageNum)
     formData.append("pageSize", pageSize)
     formData.append("categoryId", categoryId)
+    formData.append("orderByColumn", "postsId")
+    formData.append("isAsc", "desc")
     return request
         .post("/api/bbs/bbsPosts/open/list", formData)
 }
