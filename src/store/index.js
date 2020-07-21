@@ -6,7 +6,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-
+        billList:[],
+        currentTime :0,
+        process:null,
         isLogin: false,
         userInfo: {},
         showShare:false,
@@ -20,6 +22,12 @@ export default new Vuex.Store({
         },
         changeShare(state,{showShare}){
             state.showShare = showShare
+        },
+        setCurrentTime(state,payload){
+            state.currentTime=payload.currentTime;
+        },
+        setProess(state,payload){
+            state.process=payload.process;
         }
     },
     actions: {

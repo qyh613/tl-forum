@@ -1,10 +1,17 @@
 <template>
-    <div>1111</div>
+    <div>
+        <BillList type='2' :size='16'/>
+    </div>
 </template>
 
 <script>
+    import BillList from "./BillList";
+
     export default {
-        name: "Music"
+        name: "Music",
+        components:{
+            BillList
+        }
     }
 </script>
 

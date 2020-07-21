@@ -17,6 +17,7 @@ import store from "../store/index";
 import Publish from "../views/Publish/Publish";
 import MyPostDetails from "../views/Mine/components/MyPostDetails";
 import NewsDetails from "../views/News/components/NewsDetails";
+import Play from "../views/Play/Play";
 // import changePost from "../views/Mine/components/changePost";
 
 
@@ -132,7 +133,10 @@ const routes = [
     },{
         path: '/newsDetails/:articleId',
         component: NewsDetails,
-    }
+    },{
+        path: "/play/:songid",
+        component: Play,
+    },
 
 ]
 //执行路由守卫之前先检测
