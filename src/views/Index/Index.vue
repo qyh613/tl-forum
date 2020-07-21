@@ -12,7 +12,7 @@
                     <van-tab title="发现">
                         <Found />
                     </van-tab>
-                    <van-tab title="学习">
+                    <van-tab title="音乐">
                         <Study />
                     </van-tab>
                 </van-tabs>
@@ -45,7 +45,7 @@
     import Found from "./components/Found";
     import {mapState} from "vuex";
     import NewsList from "../News/NewsList";
-    import Study from "./components/music/Music";
+    import Study from "./components/Music";
 
     export default {
         name: "Index",
