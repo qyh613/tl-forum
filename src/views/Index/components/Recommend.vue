@@ -82,7 +82,6 @@
             onLoad() {
                 if (this.categoryId !== undefined){
                     getPostList(this.pageNum, 10, this.categoryId).then(res => {
-                        console.log(res)
                         this.postList = this.postList.concat(res.rows)
                         this.loading = false
                         if(this.postList.length == res.total){
