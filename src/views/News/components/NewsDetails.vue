@@ -67,6 +67,8 @@
 </script>
 
 <style scoped lang="less">
+
+
     .allContent {
         padding: 20px;
         .tiele {
@@ -77,7 +79,11 @@
             margin: 14px 0;
         }
         .contentBox{
-            /deep/.art_p {
+            /deep/ img{
+                max-width: 100% !important;
+            }
+
+            /deep/ .art_p {
                 color: #000;
                 font-size: 14px;
                 text-indent: 2em;
@@ -88,13 +94,7 @@
             }
         }
 
-        /deep/figure {
-            margin: 14px 20px;
-            width: 100%;
-            /deep/ img{
-                width: 100% !important;
-            }
-        }
+
 
     }
     .operation {

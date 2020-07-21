@@ -12,7 +12,7 @@
                             </div>
                             <div>
                                 <h3>{{item.intro}}</h3>
-                                <img :src="item.coverImgUrl" class="postImg" v-if="item.coverImgUrl != '[object Object]' || 'undefined'">
+                                <img :src="item.coverImgUrl" class="postImg" v-if="item.coverImgUrl">
                             </div>
                         </router-link>
                         <div class="operation">
