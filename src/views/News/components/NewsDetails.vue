@@ -90,6 +90,7 @@
 
         /deep/figure {
             margin: 14px 20px;
+            width: 100%;
             /deep/ img{
                 width: 100% !important;
             }
