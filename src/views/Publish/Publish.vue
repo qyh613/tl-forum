@@ -83,6 +83,7 @@
                             getMyParticipate().then(res => {
                                 console.log(res)
                                 // this.list = res.rows
+
                             })
                             Toast('发布成功');
                             this.$router.push("/index")
@@ -91,6 +92,19 @@
                             Toast('发布失败');
                         }
 
+                    }).catch(res=>{
+                        if (res.code == 0) {
+                        getMyParticipate().then(res => {
+                            console.log(res)
+                            // this.list = res.rows
+
+                        })
+                        Toast('发布成功');
+                        this.$router.push("/index")
+                    } else {
+                        console.log(res)
+                        Toast('发布失败');
+                    }
                     })
                 })
 
