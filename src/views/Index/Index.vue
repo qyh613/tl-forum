@@ -12,7 +12,7 @@
                     <van-tab title="发现">
                         <Found />
                     </van-tab>
-                    <van-tab title="学习">
+                    <van-tab title="音乐">
                         <Study />
                     </van-tab>
                 </van-tabs>
@@ -27,13 +27,6 @@
                          @click-overlay="clickOverlay"/>
 
 
-            <div class="Indexswipe" v-show="isCancel" >
-                <a href="https://alimarket.tmall.com/markets/alimama/mingdian?ali_trackid=19_d756e2df449bbc24ed1bb28f4fadff8e&spm=a21bo.2017.201863-2.1" target="_blank" >
-                    <img src="https://aecpm.alicdn.com/simba/img/TB1X6uHLVXXXXcCXVXXSutbFXXX.jpg"></a>
-                <div class="cancel" @click="cancelAdv">
-                    <van-icon name="close"/>
-                </div>
-            </div>
 
 
 
@@ -49,10 +42,14 @@
 
     export default {
         name: "Index",
+        created() {
+            // eslint-disable-next-line no-debugger
+            // debugger
+        },
         data() {
             return {
                 active: 1,
-                isCancel:true,
+
                 options: [
                     [
                         { name: '微信好友', icon: 'wechat' },
@@ -79,16 +76,15 @@
             ...mapState(["showShare"])
         },
         methods: {
-            cancelAdv() {
-                this.isCancel = false
-            },
+
             cancel() {
                 this.$store.commit("changeShare", {showShare: false})
             },
             clickOverlay() {
                 this.$store.commit("changeShare", {showShare: false})
             }
-        }
+        },
+
     }
 </script>
 
@@ -117,28 +113,5 @@
         }
     }
 
-    .Indexswipe {
-        position: fixed;
-        bottom: 60px;
-        left: 0;
-        background-color: #2c3e50;
-        width: 100%;
-        height: 140px;
-        /*background: url("");*/
-        img{
-            width: 100%;
-            height: 100%;
-        transition: t;
-        }
 
-        .cancel {
-            position: absolute;
-            z-index: 100;
-            top: 0;
-            left: 0;
-            i{
-                font-size: 25px;
-            }
-        }
-    }
 </style>

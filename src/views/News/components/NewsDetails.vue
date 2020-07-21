@@ -43,7 +43,7 @@
         name: "NewsDetails",
         methods: {
             onClickLeft() {
-                this.$router.push("/index")
+                this.$router.back()
             },
             praise(){
                 Toast('点赞成功');
@@ -104,6 +104,11 @@
             width: 30%;
             text-align: center;
 
+        }
+    }
+    /deep/.photo{
+        img{
+            width: 100%;
         }
     }
 </style>
