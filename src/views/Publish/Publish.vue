@@ -86,17 +86,9 @@
                             Toast('发布失败');
                         }
 
-                    }).catch(res=>{
-                        if (res.code == 0) {
-                        getMyParticipate().then(() => {
-
-                        })
-                        Toast('发布成功');
-                        this.$router.push("/index")
-                    } else {
-                        Toast('发布失败');
-                    }
                     })
+
+
                 })
             },
             //单击变色

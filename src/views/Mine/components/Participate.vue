@@ -15,11 +15,11 @@
                 <router-link :to="'/mine/post/details/'+item.postsId" tag="div">
                     <div class="title">
                         <van-image round width="3rem" height="3rem" :src="item.avatar"/>
-                        <p>楼主{{item.userName}}</p>
+                        <p style="padding-left: 10px">  楼主{{item.userName}}</p>
 
                     </div>
-                    <p><span  class="postName">{{'《'+item.title+'》'}}</span><span>发布时间{{item.sendTime}}</span></p>
-                    <div>
+                    <p><span  class="postName">{{item.title}}</span><span>发布时间{{item.sendTime}}</span></p>
+                    <div style="margin-right: 10px">
                         <h3>{{item.intro}}</h3>
                         <img :src="item.coverImgUrl" class="postImg">
                     </div>
@@ -83,6 +83,7 @@
             .title {
                 display: flex;
                 align-items: center;
+                margin-bottom: 10px;
 
 
             }
@@ -122,5 +123,6 @@
 
         font-size: 18px;
         padding: 10px 10px;
+        margin-top: 20px;
     }
 </style>
