@@ -129,8 +129,11 @@
         .cancel {
             position: absolute;
             z-index: 100;
-            bottom: 120px;
+            top: 0;
             left: 0;
+            i{
+                font-size: 25px;
+            }
         }
     }
 </style>
