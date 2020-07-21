@@ -43,7 +43,7 @@
     .Indexswipe {
         position: fixed;
         /*bottom: 60px;*/
-        top: 40%;
+        bottom: 60px;
         left: 0;
         background-color: #2c3e50;
         width: 100%;

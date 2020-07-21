@@ -12,7 +12,7 @@
                             </div>
                             <div>
                                 <h3>{{item.intro}}</h3>
-                                <img :src="item.coverImgUrl" class="postImg">
+                                <img :src="item.coverImgUrl" class="postImg" v-if="item.coverImgUrl != '[object Object]'">
                             </div>
                         </router-link>
                         <div class="operation">
@@ -82,6 +82,7 @@
             onLoad() {
                 if (this.categoryId !== undefined){
                     getPostList(this.pageNum, 10, this.categoryId).then(res => {
+                        console.log(res)
                         this.postList = this.postList.concat(res.rows)
                         this.loading = false
                         if(this.postList.length == res.total){
@@ -109,7 +110,6 @@
             },
             // 点赞 情提示
             praise(){
-
                 if(this.pointPraise){
                     Toast('取消点赞');
                     this.pointPraise = false
@@ -148,7 +148,6 @@
     .praise {
         color: red;
     }
-
 
     .postBox {
         padding-bottom: 50px;
