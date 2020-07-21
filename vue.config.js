@@ -9,7 +9,17 @@ module.exports={
                 target: "https://showme.myhope365.com",
                 changeOrigin: true,
             },
-
+            "/v1/restserver/ting": {
+                target: "http://tingapi.ting.baidu.com",
+                changeOrigin: true,
+            },
+            "/music":{
+                target:"http://music.taihe.com",
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/music': ''
+                }
+            },
         }
     },
 

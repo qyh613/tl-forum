@@ -38,7 +38,7 @@
     import Found from "./components/Found";
     import {mapState} from "vuex";
     import NewsList from "../News/NewsList";
-    import Study from "./components/music/Music";
+    import Study from "./components/Music";
 
     export default {
         name: "Index",
