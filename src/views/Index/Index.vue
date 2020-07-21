@@ -12,6 +12,9 @@
                     <van-tab title="发现">
                         <Found />
                     </van-tab>
+                    <van-tab title="学习">
+                        <Study />
+                    </van-tab>
                 </van-tabs>
             </div>
             <router-link tag="div" class="search" to="search">
@@ -42,6 +45,7 @@
     import Found from "./components/Found";
     import {mapState} from "vuex";
     import NewsList from "../News/NewsList";
+    import Study from "./components/music/Music";
 
     export default {
         name: "Index",
@@ -68,7 +72,8 @@
         components: {
             NewsList,
             Recommend,
-            Found
+            Found,
+            Study
         },
         computed:{
             ...mapState(["showShare"])
