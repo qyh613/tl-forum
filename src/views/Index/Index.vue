@@ -25,7 +25,7 @@
 
 
             <div class="Indexswipe" v-show="isCancel" >
-                <a href="https://alimarket.tmall.com/markets/alimama/mingdian?ali_trackid=19_d756e2df449bbc24ed1bb28f4fadff8e&spm=a21bo.2017.201863-2.1" >
+                <a href="https://alimarket.tmall.com/markets/alimama/mingdian?ali_trackid=19_d756e2df449bbc24ed1bb28f4fadff8e&spm=a21bo.2017.201863-2.1" target="_blank" >
                     <img src="https://aecpm.alicdn.com/simba/img/TB1X6uHLVXXXXcCXVXXSutbFXXX.jpg"></a>
                 <div class="cancel" @click="cancelAdv">
                     <van-icon name="close"/>
@@ -48,6 +48,7 @@
         data() {
             return {
                 active: 1,
+                isCancel:true,
                 options: [
                     [
                         { name: '微信好友', icon: 'wechat' },
