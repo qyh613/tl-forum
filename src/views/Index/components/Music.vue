@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BillList type='2' :size='16'/>
+        <BillList type='2' :size='18'/>
     </div>
 </template>
 

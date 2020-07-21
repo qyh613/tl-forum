@@ -52,6 +52,7 @@
         ul {
             display: flex;
             flex-wrap: wrap;
+            padding-bottom: 60px;
 
             li {
                 padding: 5px;
