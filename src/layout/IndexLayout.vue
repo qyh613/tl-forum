@@ -16,6 +16,7 @@
                 我的
             </van-tabbar-item>
         </van-tabbar>
+
         <van-overlay :show="release" @click="release = false">
             <div style="margin-top: 500px;margin-left: 45%">
               <router-link to="/publish"><van-icon name="comment" class="messageIcon" /></router-link>
@@ -68,5 +69,10 @@
         color: #3483f6;
         font-size: 48px;
     }
-
+    /deep/.van-tabbar--fixed {
+        position: fixed;
+        bottom: -1px;
+        left: 0;
+        height: 65px;
+    }
 </style>
