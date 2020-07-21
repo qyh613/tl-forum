@@ -73,41 +73,31 @@
             onClickRight() {
                 uploadPictures(this.coverImgUrl.file, "BBS").then(res => {
 
-                    console.log(res)
                     // categoryId, title, intro, coverImgUrl
                     createPost(this.categoryId, this.title, this.intro, res.url).then(res => {
                         // console.log(this.categoryId)
-                        // console.log( res)
 
                         if (res.code == 0) {
-                            getMyParticipate().then(res => {
-                                console.log(res)
-                                // this.list = res.rows
-
+                            getMyParticipate().then(() => {
                             })
                             Toast('发布成功');
                             this.$router.push("/index")
                         } else {
-                            console.log(res)
                             Toast('发布失败');
                         }
 
                     }).catch(res=>{
                         if (res.code == 0) {
-                        getMyParticipate().then(res => {
-                            console.log(res)
-                            // this.list = res.rows
+                        getMyParticipate().then(() => {
 
                         })
                         Toast('发布成功');
                         this.$router.push("/index")
                     } else {
-                        console.log(res)
                         Toast('发布失败');
                     }
                     })
                 })
-
             },
             //单击变色
             activeSpecial(index, categoryId) {
@@ -120,7 +110,6 @@
         },
         created() {
             getFound(1, 15).then(res => {
-                // console.log(res)
                 if (res.code == 0) {
                     this.list = res.rows
 
@@ -154,10 +143,7 @@
     }
 
     .specialBox {
-        /*display: flex;*/
         width: 100%;
-        /*flex-direction: row;*/
-
         border: 1px solid black;
         border-color: transparent;
         margin-top: 20px;
@@ -165,15 +151,13 @@
 
         li {
             height: 40px;
-            width: 15%;
+            width: 16%;
             border: 1px solid #84a9ac;
             float: left;
 
             text-align: center;
             line-height: 40px;
             font-size: 16px;
-
-
             margin: 0px 15px 10px 5px;
             border-radius: 5px;
 

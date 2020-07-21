@@ -46,7 +46,7 @@
 <style scoped lang="less">
     .Indexswipe {
         position: fixed;
-        top: 100%;
+        bottom: 0;
         left: 0;
         background-color: #2c3e50;
         width: 100%;
