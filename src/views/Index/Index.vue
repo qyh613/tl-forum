@@ -4,18 +4,18 @@
             <div class="HeaderTab">
                 <van-tabs v-model="active" animated>
                     <van-tab title="新闻">
-                        <NewsList/>
+                        <NewsList />
                     </van-tab>
                     <van-tab title="推荐">
                         <Recommend categoryId=""/>
                     </van-tab>
                     <van-tab title="发现">
-                        <Found/>
+                        <Found />
                     </van-tab>
                 </van-tabs>
             </div>
             <router-link tag="div" class="search" to="search">
-                <van-icon name="search"/>
+                <van-icon name="search" />
             </router-link>
 
             <!--        <router-view></router-view>-->
@@ -48,19 +48,18 @@
         data() {
             return {
                 active: 1,
-                isCancel: true,
                 options: [
                     [
-                        {name: '微信好友', icon: 'wechat'},
-                        {name: '朋友圈', icon: 'wechat'},
-                        {name: 'QQ好友', icon: 'qq'},
-                        {name: 'QQ空间', icon: 'qq'},
-                        {name: '新浪微博', icon: 'weibo'},
+                        { name: '微信好友', icon: 'wechat' },
+                        { name: '朋友圈', icon: 'wechat' },
+                        { name: 'QQ好友', icon: 'qq' },
+                        { name: 'QQ空间', icon: 'qq' },
+                        { name: '新浪微博', icon: 'weibo' },
                     ],
                     [
-                        {name: '复制链接', icon: 'link'},
-                        {name: '分享海报', icon: 'poster'},
-                        {name: '二维码', icon: 'qrcode'},
+                        { name: '复制链接', icon: 'link' },
+                        { name: '分享海报', icon: 'poster' },
+                        { name: '二维码', icon: 'qrcode' },
                     ],
                 ],
             }
@@ -70,7 +69,7 @@
             Recommend,
             Found
         },
-        computed: {
+        computed:{
             ...mapState(["showShare"])
         },
         methods: {
@@ -91,7 +90,6 @@
     .headNav {
         /*display: flex;*/
         position: relative;
-
         .HeaderTab {
             /deep/ .van-tabs--line .van-tabs__wrap {
                 /*height: 44px;*/
