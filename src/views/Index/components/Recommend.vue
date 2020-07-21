@@ -1,6 +1,5 @@
 <template>
     <div class="postBox">
-
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
             <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" >
                 <div class="postList" v-for="(item,index) in postList" :key="index">
@@ -201,4 +200,5 @@
             }
         }
     }
+
 </style>

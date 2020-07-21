@@ -50,7 +50,7 @@
                 <div class="ReplyContentBox">
                     <div v-for="(item,index) in postReply" :key="index" class="ReplyContent">
                         <div class="title">
-                            <van-image round width="3rem" height="3rem" :src="item.avatar"/>
+                            <van-image round width="3rem" height="3rem" :src="item.avatar" alt=""/>
                             <div class="NameTime">
                                 <span class="postName">{{item.userName}}</span>
                                 <span class="postTime">{{item.updatedTime}}</span>

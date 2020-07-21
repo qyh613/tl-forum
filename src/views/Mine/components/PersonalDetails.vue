@@ -13,8 +13,15 @@
         <div class="photo">
 
             <div class="photo-img">
+                <van-image
+                        round
+                        width="5rem"
+                        height="5rem"
+                        :src="userInfo.avatar"
 
-                <img :src="userInfo.avatar" alt="">
+                />
+
+<!--                <img :src="userInfo.avatar" alt="">-->
                 <!--                <van-icon name="photograph"/>-->
                 <p>{{userInfo.userName}} </p></div>
         </div>
@@ -86,7 +93,7 @@
     .personalDetails-Box {
         height: 100vh;
         /*background-color: #f1f9f9;*/
-        border: 1px solid black;
+        /*border: 1px solid black;*/
         border-radius: 15px;
         /*background-color: #999999;*/
         overflow: hidden;
@@ -97,6 +104,7 @@
             padding-left: 10px;
             background-color: #ffffff;
             overflow: hidden;
+            text-align: center;
         }
     }
 

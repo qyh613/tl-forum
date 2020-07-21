@@ -18,7 +18,13 @@
             <div class="photo">
 
                 <div class="photo-img">
-                    <img :src="userInfo.avatar"  @click="changeImg" alt="">
+                    <van-image
+                            round
+                            width="5rem"
+                            height="5rem"
+                            :src="userInfo.avatar"
+                            @click="changeAvatar"
+                    />
 
                     <input type="file" style="display: none" @change="uploadImg" ref="img"> <van-icon name="photograph"/>
                     <p style="font-size: 16px">
@@ -45,6 +51,7 @@
 
 <script>
     import {changeImg, changeUserInfo, getUserInfo} from "../../../api/LogIn-api";
+    import {Toast} from "vant";
     // import {Toast} from "vant";
 
     export default {
@@ -88,14 +95,15 @@
                     // console.log(res)
                     if (res.code == 0) {
                         getUserInfo().then(res => {
-                            console.log(res.data)
+                            // console.log(res.data)
                             this.userInfo = res.data
+                            Toast('修改成功');
                         })
                     }
                 })
             },
             //图片
-            changeImg() {
+            changeAvatar() {
                 this.$refs.img.click()
             },
             uploadImg(e){

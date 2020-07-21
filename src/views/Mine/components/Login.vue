@@ -58,6 +58,8 @@
                         Toast.success('登陆成功');
                         this.$router.push("/mine/personalDetails")
                         this.$store.commit("changeLogin", {isLogin: true})
+                    }else {
+                        Toast.success(res.msg);
                     }
 
                 })

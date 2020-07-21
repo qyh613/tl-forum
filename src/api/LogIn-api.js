@@ -36,7 +36,7 @@ export function getRegister(loginName,phonenumber, code, password, userName) {
     formData.append('loginName', loginName)
     formData.append("code", code)
     formData.append("phonenumber",phonenumber)
-    return request.post("/api/registry/", formData)
+    return request.post("/api/registry", formData)
 }
 
 //获取验证码
@@ -52,7 +52,7 @@ export function getForget(loginName,phonenumber, code, password,) {
     formData.append('loginName', loginName)
     formData.append("code", code)
     formData.append("phonenumber",phonenumber)
-    return request.post("/api/password/forget/", formData)
+    return request.post("/api/password/forget", formData)
 }
 //修改头像
 export function changeImg(file) {

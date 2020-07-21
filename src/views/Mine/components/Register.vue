@@ -43,7 +43,7 @@
             <!-- 允许输入数字，调起带符号的纯数字键盘 -->
             <!--            <van-field v-model="number" type="number" label="数字"/>-->
             <button class="regist" @click="onRegist">立即注册</button>
-            <p style="margin-top: 20px;margin-left: 20px">我已阅读并接受《天亮论坛用户服务协议》、《隐私政策》</p>
+<!--            <p style="margin-top: 20px;margin-left: 20px">我已阅读并接受《天亮论坛用户服务协议》、《隐私政策》</p>-->
         </div>
     </div>
 </template>
@@ -68,6 +68,7 @@
                 count: '',
                 timer: null,
                 texts: '获取验证码',
+                msg:''
 
             };
 
@@ -81,10 +82,17 @@
             },
             onRegist(){
                 // loginName,phonenumber, code, password, userName
+                // loginName,phonenumber, code, password, userName)
                 getRegister(this.loginName,this.tel,this.code,this.password,this.userName,).then(res=>{
+                    // console.log(res)
                     if (res.code==0){
+                        console.log(res)
                         Toast.success('注册成功');
-                        this.$router.push("mine")
+                        this.$router.push("/mine")
+                    }else {
+                        // console.log(res.msg)
+                        // this.msg=res.msg
+                        Toast.success(res.msg);
                     }
 
                 })
@@ -100,6 +108,7 @@
                                 if (this.count > 0 && this.count <= TIME_COUNT) {
                                     this.count--;
                                     this.texts = this.count+'S后重新获取';
+
                                 } else {
                                     clearInterval(this.timer);
                                     this.timer = null;
