@@ -75,6 +75,11 @@
                             this.$store.commit("changeLogin", {isLogin: false})
                             this.$router.push("/mine/login")
                             Toast('退出登陆成功');
+                        }).catch(()=>{
+                            // console.log(res)
+                            this.$store.commit("changeLogin", {isLogin: false})
+                            this.$router.push("/mine/login")
+                            Toast('退出登陆成功');
                         })
                     })
                     .catch(() => {
