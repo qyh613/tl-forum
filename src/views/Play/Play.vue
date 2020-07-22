@@ -1,20 +1,20 @@
 <template>
     <div class="PlayBox">
-        <dvi class="PlayBgc"></dvi>
-        <PlayHeader :name="songinfo.title"/>
+        <div class="PlayBgc"></div>
+        <PlayHeader :nameTitle="songinfo.title"/>
         <MinImg :ImgSrc="songinfo.pic_radio" :rotating="rotating"/>
         <Lyrics :content="Lyricscontent.content" v-if="Lyricscontent.content"/>
         <div class="Audio">
             <audio ref="audio" :src="bitrate.show_link" controls></audio>
         </div>
-<!--        <div class="OperationBox">-->
-            <div class="Operation">
-                <van-icon :name="pitch?'like-o':'like'" @click="active" :class="pitch?'':'colorRed'"/>
-                <van-icon name="play-circle-o" @click="startPlaying" v-show="Playing" class="fontSize"/>
-                <van-icon name="pause-circle-o" @click="suspendedPlaying" v-show="!Playing" class="fontSize"/>
+        <div class="Operation">
+            <van-icon :name="pitch?'like-o':'like'" @click="active" :class="pitch?'':'colorRed'"/>
+            <van-icon name="play-circle-o" @click="startPlaying" v-show="Playing" class="fontSize"/>
+            <van-icon name="pause-circle-o" @click="suspendedPlaying" v-show="!Playing" class="fontSize"/>
+            <a :download="songinfo.title" :href="bitrate.file_link" @click.prevent="download(bitrate.file_link)" >
                 <van-icon name="down"/>
-            </div>
-<!--        </div>-->
+            </a>
+        </div>
     </div>
 </template>
 
@@ -41,7 +41,7 @@
                 Lyricscontent: {},
                 rotating: false,
                 pitch: true,
-                Playing:true
+                Playing: true
             }
         },
         created() {
@@ -66,19 +66,19 @@
             });
         },
         computed: {
-            ...mapState(["process","currentTime"])
+            ...mapState(["process", "currentTime"])
         },
         watch: {
             process() {
                 this.$refs.audio.currentTime = this.process;
             }
         },
-        methods:{
-            startPlaying(){
+        methods: {
+            startPlaying() {
                 this.$refs.audio.play()
                 this.Playing = !this.Playing
             },
-            suspendedPlaying(){
+            suspendedPlaying() {
                 this.$refs.audio.pause()
                 this.Playing = !this.Playing
             },
@@ -91,7 +91,7 @@
                     });
                 } else {
                     Dialog.confirm({
-                        message: '您确定要取消关注吗',
+                        message: '您确定要取消收藏吗',
                     })
                         .then(() => {
                             this.pitch = !this.pitch
@@ -100,6 +100,23 @@
                         });
                 }
             },
+            async download (url){
+                let response = await fetch(url)
+                // 内容转变成blob地址
+                let blob = await response.blob()
+                // 创建隐藏的可下载链接
+                let objectUrl = window.URL.createObjectURL(blob)
+                let a = document.createElement('a')
+                //地址
+                a.href = objectUrl
+                //修改文件名
+                a.download = this.songinfo.title
+                // 触发点击
+                document.body.appendChild(a)
+                a.click()
+                //移除
+                setTimeout(() => document.body.removeChild(a), 1000)
+            }
         }
 
     }
@@ -118,10 +135,11 @@
     }
 
     .Audio {
-        audio{
+        audio {
             display: none;
         }
     }
+
     /*.OperationBox {*/
     /*    */
     /*}*/
@@ -135,9 +153,11 @@
         padding: 10px;
         width: 100%;
         margin-bottom: 5px;
+
         .fontSize {
             font-size: 32px;
         }
+
         .colorRed {
             color: red;
         }

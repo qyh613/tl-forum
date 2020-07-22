@@ -20,7 +20,8 @@
         },
         methods: {
             onClickLeft() {
-               this.$router.push("/index")
+               // this.$router.push("/index")
+                this.$router.back()
             },
         },
         components:{

@@ -3,7 +3,7 @@
         <router-link to="/index" tag="i">
             <van-icon name="wap-home-o" color="red"/>
         </router-link>
-        <div class="SongName">{{name}}</div>
+        <div class="SongName">{{nameTitle}}</div>
         <van-icon name="search" color="#999"/>
     </div>
 </template>
@@ -11,7 +11,7 @@
     export default {
         name: "PlayHeader",
         props: {
-            name: [
+            nameTitle: [
                 String
             ]
         },
