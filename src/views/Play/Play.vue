@@ -73,7 +73,6 @@
         },
         methods:{
             startPlaying(){
-                console.log(1)
                 this.$refs.audio.play()
                 this.Playing = !this.Playing
             },
