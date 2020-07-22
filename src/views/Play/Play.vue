@@ -7,12 +7,14 @@
         <div class="Audio">
             <audio ref="audio" :src="bitrate.show_link" controls></audio>
         </div>
-        <div class="Operation">
-            <van-icon :name="pitch?'like-o':'like'" @click="active"/>
-            <van-icon name="play-circle-o" @click="startPlaying" v-show="Playing" class="fontSize"/>
-            <van-icon name="pause-circle-o" @click="suspendedPlaying" v-show="!Playing" class="fontSize"/>
-            <van-icon name="down"/>
-        </div>
+<!--        <div class="OperationBox">-->
+            <div class="Operation">
+                <van-icon :name="pitch?'like-o':'like'" @click="active" :class="pitch?'':'colorRed'"/>
+                <van-icon name="play-circle-o" @click="startPlaying" v-show="Playing" class="fontSize"/>
+                <van-icon name="pause-circle-o" @click="suspendedPlaying" v-show="!Playing" class="fontSize"/>
+                <van-icon name="down"/>
+            </div>
+<!--        </div>-->
     </div>
 </template>
 
@@ -116,25 +118,28 @@
     }
 
     .Audio {
-        padding: 20px 0px 0px;
-        text-align: center;
-        position: fixed;
-        left: 50%;
-        bottom: 21px;
-        margin-left: -150px;
         audio{
             display: none;
         }
     }
-
+    /*.OperationBox {*/
+    /*    */
+    /*}*/
     .Operation {
+        position: fixed;
+        left: 0;
+        bottom: 0;
         display: flex;
         justify-content: space-around;
         font-size: 28px;
         padding: 10px;
-        margin-top: 50px;
+        width: 100%;
+        margin-bottom: 5px;
         .fontSize {
             font-size: 32px;
+        }
+        .colorRed {
+            color: red;
         }
     }
 
