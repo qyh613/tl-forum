@@ -114,7 +114,7 @@
         height: 180px;
         text-align: center;
         overflow: scroll;
-        margin: 50px 0 0;
+        margin: 25px 0 0;
         position: relative;
         .active {
             font-size: 18px;

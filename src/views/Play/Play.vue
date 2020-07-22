@@ -4,9 +4,14 @@
         <PlayHeader :name="songinfo.title"/>
         <MinImg :ImgSrc="songinfo.pic_radio" :rotating="rotating"/>
         <Lyrics :content="Lyricscontent.content" v-if="Lyricscontent.content"/>
-        <Operation/>
         <div class="Audio">
             <audio ref="audio" :src="bitrate.show_link" controls></audio>
+        </div>
+        <div class="Operation">
+            <van-icon :name="pitch?'like-o':'like'" @click="active"/>
+            <van-icon name="play-circle-o" @click="startPlaying" v-show="Playing" class="fontSize"/>
+            <van-icon name="pause-circle-o" @click="suspendedPlaying" v-show="!Playing" class="fontSize"/>
+            <van-icon name="down"/>
         </div>
     </div>
 </template>
@@ -16,16 +21,15 @@
     import PlayHeader from "./components/PlayHeader";
     import MinImg from "./components/MinImg";
     import {getLyrics, getSongDetails} from "../../api/Musice-api";
-    import Operation from "./components/Operation";
     import Lyrics from "./components/Lyrics";
     import {mapState} from "vuex";
+    import {Dialog, Toast} from "vant";
 
     export default {
         name: "Play",
         components: {
             PlayHeader,
             MinImg,
-            Operation,
             Lyrics
         },
         data() {
@@ -33,7 +37,9 @@
                 songinfo: {},
                 bitrate: {},
                 Lyricscontent: {},
-                rotating: false
+                rotating: false,
+                pitch: true,
+                Playing:true
             }
         },
         created() {
@@ -64,15 +70,42 @@
             process() {
                 this.$refs.audio.currentTime = this.process;
             }
+        },
+        methods:{
+            startPlaying(){
+                console.log(1)
+                this.$refs.audio.play()
+                this.Playing = !this.Playing
+            },
+            suspendedPlaying(){
+                this.$refs.audio.pause()
+                this.Playing = !this.Playing
+            },
+            active() {
+                if (this.pitch) {
+                    this.pitch = !this.pitch
+                    Toast({
+                        message: '收藏成功',
+                        icon: 'like-o',
+                    });
+                } else {
+                    Dialog.confirm({
+                        message: '您确定要取消关注吗',
+                    })
+                        .then(() => {
+                            this.pitch = !this.pitch
+                        })
+                        .catch(() => {
+                        });
+                }
+            },
         }
 
     }
 </script>
 
 <style scoped lang="less">
-    /*.PlayBox {*/
-    /*    background-color: #cccccc;*/
-    /*}*/
+
     .PlayBgc {
         position: fixed;
         top: 0;
@@ -90,6 +123,20 @@
         left: 50%;
         bottom: 21px;
         margin-left: -150px;
-
+        audio{
+            display: none;
+        }
     }
+
+    .Operation {
+        display: flex;
+        justify-content: space-around;
+        font-size: 28px;
+        padding: 10px;
+        margin-top: 50px;
+        .fontSize {
+            font-size: 32px;
+        }
+    }
+
 </style>

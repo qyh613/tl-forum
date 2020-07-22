@@ -19,8 +19,8 @@
 <style scoped lang="less">
     .MinImgBox {
         text-align: center;
-        margin-top: 40px;
-        height: 260px;
+        margin-top: 20px;
+        height: 270px;
 
         img {
             height: 100%;
